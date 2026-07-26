@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://ourhealthmovement.com/sitemap-index.xml
+Sitemap: https://ourhealthmovement.co.uk/sitemap-index.xml
