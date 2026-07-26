@@ -27,7 +27,7 @@ const next = all[idx - 1]; // newer
 const prev = all[idx + 1]; // older
 ---
 
-<Layout title={`${data.title} — Ep ${data.episode}`} description={data.summary}>
+<Layout title={`${data.title}, Ep ${data.episode}`} description={data.summary}>
   <article class="episode">
     <header class="ep-hero">
       <div class="wrap">
@@ -35,7 +35,7 @@ const prev = all[idx + 1]; // older
         <p class="ep-hero__num">Episode {String(data.episode).padStart(2, '0')} · {data.topic}</p>
         <h1 data-reveal>{data.title}</h1>
         <p class="ep-hero__guest" data-reveal style="--delay: 80ms">
-          with <strong>{data.guest}</strong> — {data.guestTitle}
+          with <strong>{data.guest}</strong>, {data.guestTitle}
         </p>
         <div class="ep-hero__meta" data-reveal style="--delay: 140ms">
           <span>{data.duration}</span><span aria-hidden="true">·</span><span>{dateFmt}</span>

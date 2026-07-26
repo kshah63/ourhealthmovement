@@ -5,7 +5,7 @@ order: 2
 season: [all]
 summary: >
   Skin is a doorway, not a wall. A gentle guide to reading labels and making the personal-
-  care swaps that matter most — without falling for greenwashing.
+  care swaps that matter most, without falling for greenwashing.
 tags: [low-tox, skincare, fragrance, labels]
 updated: 2026-06-01
 ---
@@ -13,7 +13,7 @@ updated: 2026-06-01
 ## What goes on you goes in you
 
 Your skin absorbs a portion of what you put on it, and the average bathroom routine layers
-on a surprising number of products a day. As with the kitchen, the aim isn't fear — it's
+on a surprising number of products a day. As with the kitchen, the aim isn't fear, it's
 **fewer, better ingredients**, and knowing what to look for on a label.
 
 ## Learn to read three things
@@ -29,16 +29,16 @@ on a surprising number of products a day. As with the kitchen, the aim isn't fea
 
 | Swap this | For this |
 | --- | --- |
-| Heavily fragranced lotions | **A simple plant oil or balm** — jojoba, almond or shea |
+| Heavily fragranced lotions | **A simple plant oil or balm**, jojoba, almond or shea |
 | Conventional deodorant | **A fragrance-free or naturally-scented one** you get on with |
-| Foaming everything | **A gentle, short-ingredient cleanser** — skin rarely needs to squeak |
+| Foaming everything | **A gentle, short-ingredient cleanser**, skin rarely needs to squeak |
 | Single-use plastic razors & bottles | **A metal razor and bar soap/shampoo** |
-| "Antibacterial" hand wash | **Plain soap and water** — just as effective for daily use |
+| "Antibacterial" hand wash | **Plain soap and water**, just as effective for daily use |
 
 ## A sensible order of operations
 
-Start with what you use **most often and leave on longest** — body lotion, deodorant,
-lip balm — since those add up. Products you rinse straight off matter less. And remember:
+Start with what you use **most often and leave on longest**, body lotion, deodorant,
+lip balm, since those add up. Products you rinse straight off matter less. And remember:
 **a simple oil moisturiser** or a bar of honest soap is often cheaper than the branded
 alternative it replaces.
 

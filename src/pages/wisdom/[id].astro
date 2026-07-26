@@ -18,7 +18,7 @@ const others = (await getCollection('wisdom'))
   .sort((a, b) => a.data.order - b.data.order);
 ---
 
-<Layout title={`${data.title} — ${data.tradition}`} description={data.summary}>
+<Layout title={`${data.title}, ${data.tradition}`} description={data.summary}>
   <article class={`wisdom-article wisdom-article--${data.accent}`}>
     <header class="wa-hero">
       <div class="wrap">

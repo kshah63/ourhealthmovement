@@ -5,7 +5,7 @@ order: 1
 season: [all]
 energetics: 'Warming · pungent & bitter · kindles digestion'
 summary: >
-  The golden root at the heart of Ayurvedic cooking — warming, bittersweet, and one of
+  The golden root at the heart of Ayurvedic cooking, warming, bittersweet, and one of
   the most-studied anti-inflammatory foods in the spice drawer.
 tags: [anti-inflammatory, golden-milk, curcumin, ayurveda]
 updated: 2026-06-01
@@ -20,7 +20,7 @@ kindling *agni* (digestion), supporting the liver, and its warming, drying quali
 
 ## Get more from it
 
-- **Pair with black pepper.** Piperine — the compound that makes pepper sharp — can
+- **Pair with black pepper.** Piperine, the compound that makes pepper sharp, can
   dramatically increase how much curcumin your body absorbs. A pinch is all it takes.
 - **Add a little fat.** Curcumin is fat-soluble, so turmeric does its best work cooked in
   oil, ghee or a milk of some kind.
@@ -38,7 +38,7 @@ kindling *agni* (digestion), supporting the liver, and its warming, drying quali
 
 ## Good to know
 
-Turmeric stains everything it touches — boards, cloth, fingertips — so work with care.
+Turmeric stains everything it touches (boards, cloth, fingertips), so work with care.
 As a concentrated supplement it can interact with blood-thinning medication and isn't
 recommended in high doses during pregnancy; as a **culinary spice** it's enjoyed freely
 in kitchens the world over. When in doubt, ask your practitioner.

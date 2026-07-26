@@ -16,7 +16,7 @@ summary: >
 
 For most of medical history, fascia was the stuff you cut through to get to the "important"
 parts. Now it's one of the most exciting frontiers in how we understand movement and pain.
-Structural bodyworker **Tom Bexley** joins us to explain the body's connective web — and
+Structural bodyworker **Tom Bexley** joins us to explain the body's connective web, and
 what it means for how you feel day to day.
 
 We get into why stretching one part of the body affects another, whether "releasing"
@@ -25,20 +25,20 @@ got tension that stretching alone never quite fixes, this one's for you.
 
 ## In this episode
 
-- **(04:00)** What fascia actually is — beyond "packing material"
+- **(04:00)** What fascia actually is, beyond "packing material"
 - **(13:25)** The continuous web: why the hip bone really is connected to the shoulder
 - **(23:50)** Hydration, movement and why fascia loves variety
-- **(34:15)** Foam rolling and "release" — what's really happening
+- **(34:15)** Foam rolling and "release", what's really happening
 - **(44:40)** Fascia, yoga and slow movement: the overlap with ancient practice
 - **(54:00)** Tom's daily 5-minute mobility routine
 
 ## Move with it
 
-Tom's point — that fascia thrives on **varied, unhurried movement** — is exactly why slow
+Tom's point, that fascia thrives on **varied, unhurried movement**, is exactly why slow
 yoga does more than it looks like. More in our guide to [Yoga](/wisdom/yoga).
 
-> "Muscles move you. Fascia is how the whole body knows what the rest of it is doing." —
+> "Muscles move you. Fascia is how the whole body knows what the rest of it is doing.",
 > Tom Bexley
 
-*Sample episode — replace with your recording and set `audioUrl` in the file's front
+*Sample episode, replace with your recording and set `audioUrl` in the file's front
 matter to embed the player.*

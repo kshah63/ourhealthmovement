@@ -38,7 +38,7 @@ const guides = defineCollection({
 });
 
 /**
- * Podcast episodes. Replace the sample episodes with your real recordings —
+ * Podcast episodes. Replace the sample episodes with your real recordings,
  * point `audioUrl` at your host (Transistor, Buzzsprout, Spotify for Podcasters, ...).
  */
 const podcast = defineCollection({

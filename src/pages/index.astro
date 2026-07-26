@@ -12,13 +12,13 @@ const guideRoutes = [
   {
     label: 'The Spice Cabinet',
     href: '/guides/spices',
-    blurb: 'Turmeric, ginger, cinnamon & more — how to use them, and why they matter.',
+    blurb: 'Turmeric, ginger, cinnamon & more, how to use them, and why they matter.',
     accent: 'ochre',
   },
   {
     label: 'Fruit & Veg',
     href: '/guides/produce',
-    blurb: 'What to eat, and when — a season-by-season guide to eating local.',
+    blurb: 'What to eat, and when, a season-by-season guide to eating local.',
     accent: 'sage',
   },
   {
@@ -32,7 +32,7 @@ const guideRoutes = [
 const values = [
   {
     title: 'Rooted in tradition',
-    text: 'We take seriously the knowledge held in Ayurveda, Chinese Medicine, Yoga and other lineages — not as folklore, but as thousands of years of careful observation.',
+    text: 'We take seriously the knowledge held in Ayurveda, Chinese Medicine, Yoga and other lineages, not as folklore, but as thousands of years of careful observation.',
   },
   {
     title: 'Honest, not dogmatic',
@@ -62,7 +62,7 @@ const values = [
       <div class="hero__grid">
       <div class="hero__copy">
         <p class="hero__lede" data-reveal style="--delay: 200ms">
-          A slower, wiser way to look after yourself — drawing on traditions thousands of
+          A slower, wiser way to look after yourself, drawing on traditions thousands of
           years old, and translating them into how we eat, move and live with the seasons
           today.
         </p>
@@ -122,13 +122,13 @@ const values = [
       <h2>A movement back toward<br /><em>older, wiser ways</em></h2>
       <p class="story__lede">
         We started Our Health Movement for one reason: modern wellness had become
-        loud, expensive and complicated — while the wisdom that actually helps people feel
+        loud, expensive and complicated, while the wisdom that actually helps people feel
         well has been quietly sitting in ancient traditions all along.
       </p>
     </div>
     <div class="wrap-narrow prose story__prose" data-reveal-scroll>
       <p class="story__standfirst">
-        For most of human history, health wasn't a product. It was a way of living — woven
+        For most of human history, health wasn't a product. It was a way of living, woven
         into what you ate, how you moved, when you rested, and your place in the turning of
         the year.
       </p>
@@ -136,11 +136,11 @@ const values = [
         Somewhere along the way, we traded a lot of that for convenience. Food arrived
         stripped of its season. Movement became something you scheduled. And a growing haze
         of synthetic fragrances, plastics and additives settled quietly into daily life. We
-        gained so much — and mislaid something, too.
+        gained so much, and mislaid something, too.
       </p>
       <p>
         <strong>Our Health Movement is an attempt to gather it back up.</strong> We look to
-        Ayurveda, Traditional Chinese Medicine, Yoga and other enduring traditions — not to
+        Ayurveda, Traditional Chinese Medicine, Yoga and other enduring traditions, not to
         romanticise the past, but because they hold genuinely useful, time-tested ideas about
         living well. Then we translate them into something you can actually do in a modern
         kitchen.
@@ -149,11 +149,11 @@ const values = [
         That means seasonal, local eating. Cooking with spices that double as medicine.
         Moving in ways the body was built for, and breathing in ways that settle the nervous
         system. Clearing out the low-level toxic load of everyday life. And sharing all of it
-        here, in plain language — free of fads and fear — so you can take what's useful and
+        here, in plain language, free of fads and fear, so you can take what's useful and
         leave the rest.
       </p>
       <blockquote>
-        The future of feeling well looks a lot like the past — seasonal, unhurried, and
+        The future of feeling well looks a lot like the past, seasonal, unhurried, and
         deeply connected to the natural world.
       </blockquote>
     </div>
@@ -190,7 +190,7 @@ const values = [
         </div>
         <p class="block-head__note">
           Ayurveda, Traditional Chinese Medicine and Yoga grew up worlds apart, yet they
-          arrive at the same quiet truths — balance, breath, and living in step with nature.
+          arrive at the same quiet truths, balance, breath, and living in step with nature.
         </p>
       </header>
 
@@ -259,7 +259,7 @@ const values = [
           <h2>Wisdom you can use tonight</h2>
         </div>
         <p class="block-head__note">
-          Practical, no-nonsense guides — for the spice drawer, the veg box and the rest of
+          Practical, no-nonsense guides, for the spice drawer, the veg box and the rest of
           the house.
         </p>
       </header>
@@ -843,10 +843,10 @@ const values = [
     if (el.getAttribute('data-season-card') === current) el.classList.add('is-current');
   });
   const titles: Record<string, string> = {
-    spring: "It's spring — time to lighten & renew",
-    summer: "It's summer — time to cool & hydrate",
-    autumn: "It's autumn — time to ground & gather",
-    winter: "It's winter — time to warm & restore",
+    spring: "It's spring, time to lighten & renew",
+    summer: "It's summer, time to cool & hydrate",
+    autumn: "It's autumn, time to ground & gather",
+    winter: "It's winter, time to warm & restore",
   };
   const titleEl = document.querySelector('[data-season-title]');
   if (titleEl && titles[current]) titleEl.textContent = titles[current];

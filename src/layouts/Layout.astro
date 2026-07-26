@@ -12,12 +12,12 @@ interface Props {
 
 const {
   title,
-  description = 'Ancient wisdom for modern life — Ayurveda, Traditional Chinese Medicine and Yoga, translated into seasonal eating, everyday guides and a podcast worth listening to.',
+  description = 'Ancient wisdom for modern life: Ayurveda, Traditional Chinese Medicine and Yoga, translated into seasonal eating and everyday guides you can actually use.',
   ogImage = '/og-default.png',
 } = Astro.props;
 
 const siteName = 'Our Health Movement';
-const fullTitle = title ? `${title} · ${siteName}` : `${siteName} — Ancient wisdom, modern life`;
+const fullTitle = title ? `${title} · ${siteName}` : `${siteName} · Ancient wisdom, modern life`;
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
 const ogUrl = new URL(ogImage, Astro.site).href;
 ---

@@ -17,7 +17,7 @@ const endpoint = `https://formspree.io/f/${FORMSPREE_ID}`;
     <p class="eyebrow centered">The Seasonal Letter</p>
     <h2>One thoughtful note, at the turn of each season</h2>
     <p class="news__lede">
-      What's coming into season, a spice to lean on, and a low-tox swap worth making — sent
+      What's coming into season, a spice to lean on, and a low-tox swap worth making, sent
       when the season shifts, never more. No noise, no selling your inbox.
     </p>
 
@@ -139,10 +139,10 @@ const endpoint = `https://formspree.io/f/${FORMSPREE_ID}`;
       const endpoint = form.dataset.endpoint || '';
       const email = new FormData(form).get('email');
 
-      // Not wired to a provider yet — guide the site owner (see README / Newsletter.astro).
+      // Not wired to a provider yet, guide the site owner (see README / Newsletter.astro).
       if (!endpoint || endpoint.includes(placeholder ?? '___')) {
         status.classList.remove('is-error');
-        status.textContent = '✦ Almost ready — connect your email provider to start collecting sign-ups.';
+        status.textContent = '✦ Almost ready, connect your email provider to start collecting sign-ups.';
         return;
       }
 
@@ -162,7 +162,7 @@ const endpoint = `https://formspree.io/f/${FORMSPREE_ID}`;
         }
       } catch {
         status.classList.add('is-error');
-        status.textContent = 'Something went wrong — please try again in a moment.';
+        status.textContent = 'Something went wrong, please try again in a moment.';
       }
     });
   }
