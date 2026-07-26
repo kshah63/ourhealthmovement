@@ -211,6 +211,10 @@ strong {
 .section {
   padding-block: clamp(3.5rem, 8vw, 7rem);
 }
+/* offset in-page anchor jumps so they clear the sticky header */
+:target {
+  scroll-margin-top: 92px;
+}
 .stack > * + * {
   margin-top: var(--flow, 1.1em);
 }

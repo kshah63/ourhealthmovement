@@ -32,19 +32,39 @@ const guideRoutes = [
     accent: 'clay',
   },
 ];
+
+const values = [
+  {
+    title: 'Rooted in tradition',
+    text: 'We take seriously the knowledge held in Ayurveda, Chinese Medicine, Yoga and other lineages — not as folklore, but as thousands of years of careful observation.',
+  },
+  {
+    title: 'Honest, not dogmatic',
+    text: 'We share where ancient practice and modern science agree, and we say so when the evidence is thin. No fear-mongering, no miracle cures, no absolutes.',
+  },
+  {
+    title: 'Small, doable steps',
+    text: 'Wellbeing isn’t built on a grand overhaul. It’s a warm breakfast, a walk after dinner, one swap at a time. We keep it practical.',
+  },
+  {
+    title: 'With the seasons',
+    text: 'Nature moves in cycles, and so should we. Eating, moving and resting in tune with the season is the thread running through everything here.',
+  },
+];
 ---
 
 <Layout>
   <!-- ================= HERO ================= -->
   <section class="hero">
     <div class="hero__glow" aria-hidden="true"></div>
-    <div class="wrap hero__grid">
+    <div class="wrap hero__inner">
+      <p class="eyebrow" data-reveal style="--delay: 0ms">Ayurveda · Chinese Medicine · Yoga</p>
+      <h1 class="hero__title" data-reveal style="--delay: 90ms">
+        Ancient wisdom, for a <em>modern</em> life.
+      </h1>
+
+      <div class="hero__grid">
       <div class="hero__copy">
-        <p class="eyebrow" data-reveal style="--delay: 0ms">Ayurveda · Chinese Medicine · Yoga</p>
-        <h1 data-reveal style="--delay: 90ms">
-          Ancient wisdom,<br />
-          for a <em>modern</em> life.
-        </h1>
         <p class="hero__lede" data-reveal style="--delay: 200ms">
           A slower, wiser way to look after yourself — drawing on traditions thousands of
           years old, and translating them into how we eat, move and live with the seasons
@@ -78,6 +98,7 @@ const guideRoutes = [
         <Botanical variant="sprig" width={70} class="hero__sprig hero__sprig--1" />
         <Botanical variant="sprig" width={54} class="hero__sprig hero__sprig--2" />
       </div>
+      </div>
     </div>
     <div class="hero__ticker" aria-hidden="true">
       <div class="hero__ticker-track">
@@ -97,18 +118,62 @@ const guideRoutes = [
     </div>
   </section>
 
-  <!-- ================= MANIFESTO ================= -->
-  <section class="section manifesto">
-    <div class="wrap-narrow" data-reveal-scroll>
-      <p class="eyebrow centered">Our small idea</p>
-      <p class="manifesto__text">
-        We think the future of feeling well looks a lot like the past. Not a rejection of
-        modern life — but a <strong>reunion with older, gentler knowledge</strong>: eating
-        what the season offers, using food as medicine, moving the body it was built to
-        move, and clearing out what quietly wears us down. This is a movement back toward
-        that.
+  <!-- ================= OUR STORY ================= -->
+  <section class="section story" id="story">
+    <div class="wrap story__head" data-reveal-scroll>
+      <div class="story__mark" aria-hidden="true"><BrandMark size={54} /></div>
+      <p class="eyebrow centered">Our Story</p>
+      <h2>A movement back toward<br /><em>older, wiser ways</em></h2>
+      <p class="story__lede">
+        We started Our Health Movement from a simple frustration: modern wellness had become
+        loud, expensive and complicated — while the wisdom that actually helps people feel
+        well has been quietly sitting in ancient traditions all along.
       </p>
-      <Botanical variant="wave" width={110} class="manifesto__wave" />
+    </div>
+    <div class="wrap-narrow prose story__prose" data-reveal-scroll>
+      <p class="story__standfirst">
+        For most of human history, health wasn't a product. It was a way of living — woven
+        into what you ate, how you moved, when you rested, and your place in the turning of
+        the year.
+      </p>
+      <p>
+        Somewhere along the way, we traded a lot of that for convenience. Food arrived
+        stripped of its season. Movement became something you scheduled. And a growing haze
+        of synthetic fragrances, plastics and additives settled quietly into daily life. We
+        gained so much — and mislaid something, too.
+      </p>
+      <p>
+        <strong>Our Health Movement is an attempt to gather it back up.</strong> We look to
+        Ayurveda, Traditional Chinese Medicine, Yoga and other enduring traditions — not to
+        romanticise the past, but because they hold genuinely useful, time-tested ideas about
+        living well. Then we translate them into something you can actually do in a modern
+        kitchen, on a modern Tuesday.
+      </p>
+      <blockquote>
+        The future of feeling well looks a lot like the past — seasonal, unhurried, and
+        deeply connected to the natural world.
+      </blockquote>
+    </div>
+  </section>
+
+  <!-- ================= WHAT WE BELIEVE ================= -->
+  <section class="section values dark">
+    <div class="wrap">
+      <header class="values__head" data-reveal-scroll>
+        <p class="eyebrow">What we believe</p>
+        <h2>Four things we hold to</h2>
+      </header>
+      <div class="values__grid">
+        {
+          values.map((v, i) => (
+            <article class="value" data-reveal-scroll style={`--delay: ${i * 80}ms`}>
+              <span class="value__num">0{i + 1}</span>
+              <h3>{v.title}</h3>
+              <p>{v.text}</p>
+            </article>
+          ))
+        }
+      </div>
     </div>
   </section>
 
@@ -266,6 +331,32 @@ const guideRoutes = [
     pointer-events: none;
     z-index: 0;
   }
+  .hero__inner {
+    position: relative;
+    z-index: 1;
+    padding-bottom: clamp(2.5rem, 6vw, 4.5rem);
+  }
+  .hero__title {
+    font-size: clamp(2.3rem, 10vw, 3.4rem);
+    font-variation-settings: 'opsz' 144, 'SOFT' 20, 'wght' 400;
+    margin-top: 1rem;
+    letter-spacing: -0.025em;
+    line-height: 1.02;
+    text-wrap: balance;
+  }
+  .hero__title em {
+    font-style: italic;
+    color: var(--terracotta);
+    font-variation-settings: 'opsz' 144, 'SOFT' 80, 'wght' 380;
+  }
+  /* On wider screens the headline sits on a single line, sized to fill the width. */
+  @media (min-width: 760px) {
+    .hero__title {
+      white-space: nowrap;
+      font-size: min(5.72vw, 4.9rem);
+      text-wrap: nowrap;
+    }
+  }
   .hero__grid {
     position: relative;
     z-index: 1;
@@ -273,18 +364,7 @@ const guideRoutes = [
     grid-template-columns: 1.15fr 0.85fr;
     gap: clamp(1.5rem, 4vw, 3rem);
     align-items: center;
-    padding-bottom: clamp(2.5rem, 6vw, 4.5rem);
-  }
-  .hero h1 {
-    font-size: var(--step-5);
-    font-variation-settings: 'opsz' 144, 'SOFT' 20, 'wght' 400;
-    margin-top: 1rem;
-    letter-spacing: -0.02em;
-  }
-  .hero h1 em {
-    font-style: italic;
-    color: var(--terracotta);
-    font-variation-settings: 'opsz' 144, 'SOFT' 80, 'wght' 380;
+    margin-top: clamp(1.5rem, 3.5vw, 2.75rem);
   }
   .hero__lede {
     margin-top: 1.5rem;
@@ -414,27 +494,102 @@ const guideRoutes = [
     }
   }
 
-  /* ---------------- manifesto ---------------- */
-  .manifesto {
-    text-align: center;
-    padding-block: clamp(3.5rem, 8vw, 6.5rem);
+  /* ---------------- our story ---------------- */
+  .story {
+    padding-block: clamp(3.5rem, 8vw, 6rem) clamp(2.5rem, 6vw, 4rem);
   }
-  .manifesto__text {
-    margin-top: 1.5rem;
+  .story__head {
+    text-align: center;
+    max-width: 720px;
+  }
+  .story__mark {
+    color: var(--terracotta);
+    display: inline-grid;
+    place-items: center;
+    width: 84px;
+    height: 84px;
+    border-radius: 50%;
+    background: var(--paper-2);
+    box-shadow: inset 0 2px 12px rgba(42, 32, 25, 0.1);
+    margin-bottom: 1.5rem;
+  }
+  .story__head h2 {
+    font-size: var(--step-4);
+    margin-top: 0.5rem;
+  }
+  .story__head h2 em {
+    font-style: italic;
+    color: var(--terracotta);
+  }
+  .story__lede {
+    margin: 1.5rem auto 0;
+    max-width: 56ch;
+    font-size: var(--step-1);
+    color: var(--ink-2);
+    line-height: 1.5;
+  }
+  .story__prose {
+    margin-top: clamp(2rem, 5vw, 3.25rem);
+    font-size: var(--step-1);
+  }
+  .story__standfirst {
     font-family: var(--font-display);
     font-size: var(--step-2);
-    font-variation-settings: 'opsz' 60, 'SOFT' 40, 'wght' 380;
-    line-height: 1.35;
+    font-variation-settings: 'opsz' 60, 'SOFT' 40, 'wght' 370;
+    line-height: 1.3;
     color: var(--ink);
   }
-  .manifesto__text strong {
+  .story__prose strong {
     color: var(--terracotta-deep);
-    font-weight: inherit;
-    font-style: italic;
   }
-  .manifesto__wave {
-    color: var(--sage);
-    margin: 2rem auto 0;
+
+  /* ---------------- what we believe ---------------- */
+  .values {
+    background: linear-gradient(165deg, var(--forest), var(--forest-2));
+  }
+  .values__head {
+    margin-bottom: 2.5rem;
+  }
+  .values__head h2 {
+    margin-top: 0.5rem;
+  }
+  .values__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.25rem;
+  }
+  .value {
+    padding: 1.75rem 1.5rem;
+    background: rgba(244, 234, 214, 0.05);
+    border: 1px solid rgba(236, 228, 211, 0.14);
+    border-top: 3px solid var(--ochre);
+    border-radius: var(--radius);
+  }
+  .value__num {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: var(--step-2);
+    color: var(--ochre);
+  }
+  .value h3 {
+    color: #f4ead6;
+    font-size: var(--step-1);
+    margin: 0.5rem 0 0.6rem;
+  }
+  .value p {
+    color: #c8bda3;
+    font-size: var(--step--1);
+    line-height: 1.6;
+  }
+  @media (max-width: 860px) {
+    .values__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (max-width: 480px) {
+    .values__grid {
+      grid-template-columns: 1fr;
+    }
   }
 
   /* ---------------- shared block head ---------------- */
