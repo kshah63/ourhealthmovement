@@ -29,24 +29,6 @@ const guideRoutes = [
   },
 ];
 
-const values = [
-  {
-    title: 'Rooted in tradition',
-    text: 'We take seriously the knowledge held in Ayurveda, Chinese Medicine, Yoga and other lineages, not as folklore, but as thousands of years of careful observation.',
-  },
-  {
-    title: 'Honest, not dogmatic',
-    text: 'We share where ancient practice and modern science agree, and we say so when the evidence is thin. No fear-mongering, no miracle cures, no absolutes.',
-  },
-  {
-    title: 'Small, doable steps',
-    text: 'Wellbeing isn’t built on a grand overhaul. It’s a warm breakfast, a walk after dinner, one swap at a time. We keep it practical.',
-  },
-  {
-    title: 'With the seasons',
-    text: 'Nature moves in cycles, and so should we. Eating, moving and resting in tune with the season is the thread running through everything here.',
-  },
-];
 ---
 
 <Layout>
@@ -116,66 +98,49 @@ const values = [
 
   <!-- ================= OUR STORY ================= -->
   <section class="section story" id="story">
-    <div class="wrap story__head" data-reveal-scroll>
-      <div class="story__mark" aria-hidden="true"><BrandMark size={54} /></div>
-      <p class="eyebrow centered">Our Story</p>
-      <h2>A movement back toward<br /><em>older, wiser ways</em></h2>
-      <p class="story__lede">
-        We started Our Health Movement for one reason: modern wellness had become
-        loud, expensive and complicated, while the wisdom that actually helps people feel
-        well has been quietly sitting in ancient traditions all along.
-      </p>
-    </div>
-    <div class="wrap-narrow prose story__prose" data-reveal-scroll>
-      <p class="story__standfirst">
-        For most of human history, health wasn't a product. It was a way of living, woven
-        into what you ate, how you moved, when you rested, and your place in the turning of
-        the year.
-      </p>
-      <p>
-        Somewhere along the way, we traded a lot of that for convenience. Food arrived
-        stripped of its season. Movement became something you scheduled. And a growing haze
-        of synthetic fragrances, plastics and additives settled quietly into daily life. We
-        gained so much, and mislaid something, too.
-      </p>
-      <p>
-        <strong>Our Health Movement is an attempt to gather it back up.</strong> We look to
-        Ayurveda, Traditional Chinese Medicine, Yoga and other enduring traditions, not to
-        romanticise the past, but because they hold genuinely useful, time-tested ideas about
-        living well. Then we translate them into something you can actually do in a modern
-        kitchen.
-      </p>
-      <p>
-        That means seasonal, local eating. Cooking with spices that double as medicine.
-        Moving in ways the body was built for, and breathing in ways that settle the nervous
-        system. Clearing out the low-level toxic load of everyday life. And sharing all of it
-        here, in plain language, free of fads and fear, so you can take what's useful and
-        leave the rest.
-      </p>
-      <blockquote>
-        The future of feeling well looks a lot like the past, seasonal, unhurried, and
-        deeply connected to the natural world.
-      </blockquote>
-    </div>
-  </section>
-
-  <!-- ================= WHAT WE BELIEVE ================= -->
-  <section class="section values dark">
     <div class="wrap">
-      <header class="values__head" data-reveal-scroll>
-        <p class="eyebrow">What we believe</p>
-        <h2>Four things we hold to</h2>
+      <header class="block-head" data-reveal-scroll>
+        <div>
+          <p class="eyebrow">Our Story</p>
+          <h2>A movement back toward older, wiser ways</h2>
+        </div>
+        <p class="block-head__note">
+          We started Our Health Movement for one reason: modern wellness had become loud,
+          expensive and complicated, while the wisdom that actually helps people feel well
+          has been quietly sitting in ancient traditions all along.
+        </p>
       </header>
-      <div class="values__grid">
-        {
-          values.map((v, i) => (
-            <article class="value" data-reveal-scroll style={`--delay: ${i * 80}ms`}>
-              <span class="value__num">0{i + 1}</span>
-              <h3>{v.title}</h3>
-              <p>{v.text}</p>
-            </article>
-          ))
-        }
+
+      <div class="prose story__prose" data-reveal-scroll>
+        <p class="story__standfirst">
+          For most of human history, health wasn't a product. It was a way of living, woven
+          into what you ate, how you moved, when you rested, and your place in the turning of
+          the year.
+        </p>
+        <p>
+          Somewhere along the way, we traded a lot of that for convenience. Food arrived
+          stripped of its season. Movement became something you scheduled. And a growing haze
+          of synthetic fragrances, plastics and additives settled quietly into daily life. We
+          gained so much, and mislaid something, too.
+        </p>
+        <p>
+          <strong>Our Health Movement is an attempt to gather it back up.</strong> We look to
+          Ayurveda, Traditional Chinese Medicine, Yoga and other enduring traditions, not to
+          romanticise the past, but because they hold genuinely useful, time-tested ideas
+          about living well. Then we translate them into something you can actually do in a
+          modern kitchen.
+        </p>
+        <p>
+          That means seasonal, local eating. Cooking with spices that double as medicine.
+          Moving in ways the body was built for, and breathing in ways that settle the nervous
+          system. Clearing out the low-level toxic load of everyday life. And sharing all of
+          it here, in plain language, free of fads and fear, so you can take what's useful and
+          leave the rest.
+        </p>
+        <blockquote>
+          The future of feeling well looks a lot like the past: seasonal, unhurried, and
+          deeply connected to the natural world.
+        </blockquote>
       </div>
     </div>
   </section>
@@ -463,41 +428,9 @@ const values = [
   }
 
   /* ---------------- our story ---------------- */
-  .story {
-    padding-block: clamp(3.5rem, 8vw, 6rem) clamp(2.5rem, 6vw, 4rem);
-  }
-  .story__head {
-    text-align: center;
-    max-width: 720px;
-  }
-  .story__mark {
-    color: var(--terracotta);
-    display: inline-grid;
-    place-items: center;
-    width: 84px;
-    height: 84px;
-    border-radius: 50%;
-    background: var(--paper-2);
-    box-shadow: inset 0 2px 12px rgba(42, 32, 25, 0.1);
-    margin-bottom: 1.5rem;
-  }
-  .story__head h2 {
-    font-size: var(--step-4);
-    margin-top: 0.5rem;
-  }
-  .story__head h2 em {
-    font-style: italic;
-    color: var(--terracotta);
-  }
-  .story__lede {
-    margin: 1.5rem auto 0;
-    max-width: 56ch;
-    font-size: var(--step-1);
-    color: var(--ink-2);
-    line-height: 1.5;
-  }
   .story__prose {
-    margin-top: clamp(2rem, 5vw, 3.25rem);
+    max-width: 720px;
+    margin-top: clamp(1.5rem, 3vw, 2.25rem);
     font-size: var(--step-1);
   }
   .story__standfirst {
@@ -509,55 +442,6 @@ const values = [
   }
   .story__prose strong {
     color: var(--terracotta-deep);
-  }
-
-  /* ---------------- what we believe ---------------- */
-  .values {
-    background: linear-gradient(165deg, var(--forest), var(--forest-2));
-  }
-  .values__head {
-    margin-bottom: 2.5rem;
-  }
-  .values__head h2 {
-    margin-top: 0.5rem;
-  }
-  .values__grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1.25rem;
-  }
-  .value {
-    padding: 1.75rem 1.5rem;
-    background: rgba(244, 234, 214, 0.05);
-    border: 1px solid rgba(236, 228, 211, 0.14);
-    border-top: 3px solid var(--ochre);
-    border-radius: var(--radius);
-  }
-  .value__num {
-    font-family: var(--font-display);
-    font-style: italic;
-    font-size: var(--step-2);
-    color: var(--ochre);
-  }
-  .value h3 {
-    color: #f4ead6;
-    font-size: var(--step-1);
-    margin: 0.5rem 0 0.6rem;
-  }
-  .value p {
-    color: #c8bda3;
-    font-size: var(--step--1);
-    line-height: 1.6;
-  }
-  @media (max-width: 860px) {
-    .values__grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-  @media (max-width: 480px) {
-    .values__grid {
-      grid-template-columns: 1fr;
-    }
   }
 
   /* ---------------- shared block head ---------------- */
