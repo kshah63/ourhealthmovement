@@ -34,9 +34,7 @@ something far wider. The word comes from the Sanskrit root *yuj* (*to yoke, to u
 same ancient root that gives us the English "yoke." What yoga sets out to unite is you with
 yourself: body with breath, breath with mind, and the restless everyday self with something
 quieter and deeper. One classic description puts it beautifully: yoga as *the journey of the
-self, through the self, to the self.* Patanjali later mapped that journey as **eight
-limbs**: ethics, self-discipline, posture, breath, withdrawal of the senses, concentration,
-meditation and absorption. Asana, the physical poses, is just one.
+self, through the self, to the self.*
 
 ### Breath: the lever you always have
 
