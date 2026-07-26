@@ -7,10 +7,6 @@ import { getCollection } from 'astro:content';
 import { seasons } from '../data/seasonal.ts';
 
 const wisdom = (await getCollection('wisdom')).sort((a, b) => a.data.order - b.data.order);
-const episodes = (await getCollection('podcast'))
-  .filter((e) => e.data.published)
-  .sort((a, b) => b.data.episode - a.data.episode);
-const latest = episodes[0];
 
 const guideRoutes = [
   {
@@ -72,7 +68,7 @@ const values = [
         </p>
         <div class="hero__actions" data-reveal style="--delay: 300ms">
           <a href="/wisdom" class="btn btn--terracotta">Explore the wisdom <span class="arrow">→</span></a>
-          <a href="/podcast" class="btn btn--ghost">Listen to the podcast</a>
+          <a href="/eat" class="btn btn--ghost">Eat with the seasons</a>
         </div>
         <ul class="hero__pills" data-reveal style="--delay: 400ms">
           <li>Seasonal &amp; local eating</li>
@@ -147,7 +143,14 @@ const values = [
         Ayurveda, Traditional Chinese Medicine, Yoga and other enduring traditions — not to
         romanticise the past, but because they hold genuinely useful, time-tested ideas about
         living well. Then we translate them into something you can actually do in a modern
-        kitchen, on a modern Tuesday.
+        kitchen.
+      </p>
+      <p>
+        That means seasonal, local eating. Cooking with spices that double as medicine.
+        Moving in ways the body was built for, and breathing in ways that settle the nervous
+        system. Clearing out the low-level toxic load of everyday life. And sharing all of it
+        here, in plain language — free of fads and fear — so you can take what's useful and
+        leave the rest.
       </p>
       <blockquote>
         The future of feeling well looks a lot like the past — seasonal, unhurried, and
@@ -275,41 +278,6 @@ const values = [
       </div>
     </div>
   </section>
-
-  <!-- ================= PODCAST ================= -->
-  {
-    latest && (
-      <section class="section podcast-teaser" id="podcast">
-        <div class="wrap podcast-teaser__grid">
-          <div class="podcast-teaser__intro" data-reveal-scroll>
-            <p class="eyebrow">The Podcast</p>
-            <h2>Conversations worth slowing down for</h2>
-            <p>
-              Long, unhurried talks with teachers, practitioners and healers — on yoga,
-              Ayurveda, fascia health and living well. New episodes at the turn of each
-              season.
-            </p>
-            <a href="/podcast" class="btn btn--terracotta">All episodes <span class="arrow">→</span></a>
-          </div>
-
-          <a href={`/podcast/${latest.id}`} class="episode-feature" data-reveal-scroll>
-            <span class="episode-feature__badge">Latest · Ep {latest.data.episode}</span>
-            <div class="episode-feature__play" aria-hidden="true">
-              <svg viewBox="0 0 24 24" width="26" height="26"><path d="M8 5v14l11-7z" fill="currentColor" /></svg>
-            </div>
-            <div class="episode-feature__body">
-              <p class="episode-feature__topic">{latest.data.topic}</p>
-              <h3>{latest.data.title}</h3>
-              <p class="episode-feature__guest">
-                with {latest.data.guest} · {latest.data.guestTitle}
-              </p>
-              <p class="episode-feature__meta">{latest.data.duration}</p>
-            </div>
-          </a>
-        </div>
-      </section>
-    )
-  }
 
   <Newsletter />
 </Layout>
@@ -844,89 +812,6 @@ const values = [
     position: relative;
   }
 
-  /* ---------------- podcast teaser ---------------- */
-  .podcast-teaser__grid {
-    display: grid;
-    grid-template-columns: 0.9fr 1.1fr;
-    gap: clamp(1.5rem, 4vw, 3.5rem);
-    align-items: center;
-  }
-  .podcast-teaser__intro h2 {
-    margin: 0.5rem 0 1rem;
-  }
-  .podcast-teaser__intro p {
-    color: var(--ink-2);
-    max-width: 40ch;
-    margin-bottom: 1.75rem;
-  }
-  .episode-feature {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    gap: 1.25rem;
-    align-items: center;
-    padding: 1.75rem;
-    border-radius: var(--radius);
-    text-decoration: none;
-    color: #ece4d3;
-    background: linear-gradient(150deg, var(--sage-deep), var(--forest));
-    position: relative;
-    box-shadow: 0 26px 50px -30px rgba(42, 32, 25, 0.7);
-    transition: transform 0.25s ease;
-  }
-  .episode-feature:hover {
-    transform: translateY(-3px);
-    color: #ece4d3;
-  }
-  .episode-feature__badge {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    font-size: 0.72rem;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    font-weight: 640;
-    color: var(--forest);
-    background: var(--ochre);
-    padding: 0.3em 0.7em;
-    border-radius: 100px;
-  }
-  .episode-feature__play {
-    width: 66px;
-    height: 66px;
-    border-radius: 50%;
-    display: grid;
-    place-items: center;
-    background: var(--ochre);
-    color: var(--forest);
-    flex: none;
-    transition: transform 0.25s ease;
-  }
-  .episode-feature:hover .episode-feature__play {
-    transform: scale(1.06);
-  }
-  .episode-feature__topic {
-    font-size: 0.74rem;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--ochre);
-    font-weight: 620;
-  }
-  .episode-feature h3 {
-    color: #f4ead6;
-    font-size: var(--step-1);
-    margin: 0.35rem 0;
-    line-height: 1.15;
-  }
-  .episode-feature__guest {
-    color: #cbc0a7;
-    font-size: var(--step--1);
-  }
-  .episode-feature__meta {
-    color: #a89d84;
-    font-size: 0.8rem;
-    margin-top: 0.35rem;
-  }
-
   /* ---------------- responsive ---------------- */
   @media (max-width: 900px) {
     .hero__grid {
@@ -943,15 +828,9 @@ const values = [
     .season-cards {
       grid-template-columns: repeat(2, 1fr);
     }
-    .podcast-teaser__grid {
-      grid-template-columns: 1fr;
-    }
   }
   @media (max-width: 480px) {
     .season-cards {
-      grid-template-columns: 1fr;
-    }
-    .episode-feature {
       grid-template-columns: 1fr;
     }
   }

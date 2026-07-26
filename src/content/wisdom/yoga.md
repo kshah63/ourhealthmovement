@@ -30,10 +30,13 @@ principles:
 ## The practice beneath the poses
 
 In the West, "yoga" often means a mat and a sequence of shapes. In its origins it is
-something wider: a systematic practice for quieting the mind and uniting body, breath and
-awareness. Patanjali laid out **eight limbs** — ethics, self-discipline, posture, breath,
-withdrawal of the senses, concentration, meditation and absorption. Asana, the physical
-poses, is just one.
+something far wider. The word comes from the Sanskrit root *yuj* — *to yoke, to unite* —
+the same ancient root that gives us the English "yoke." What yoga sets out to unite is you
+with yourself: body with breath, breath with mind, and the restless everyday self with
+something quieter and deeper. One classic description puts it beautifully — yoga as *the
+journey of the self, through the self, to the self.* Patanjali later mapped that journey as
+**eight limbs** — ethics, self-discipline, posture, breath, withdrawal of the senses,
+concentration, meditation and absorption. Asana, the physical poses, is just one.
 
 ### Breath: the lever you always have
 
