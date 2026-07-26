@@ -2,7 +2,7 @@
 title: Yoga
 tradition: The Practice of Union
 origin: India
-era: c. 400 CE, Patanjali's Yoga Sutras
+era: c. 1500 BCE (the Vedas), codified c. 400 CE
 accent: ochre
 order: 3
 summary: >
@@ -30,8 +30,9 @@ principles:
 ## The practice beneath the poses
 
 In the West, "yoga" often means a mat and a sequence of shapes. In its origins it is
-something far wider. The word comes from the Sanskrit root *yuj* (*to yoke, to unite*), the
-same ancient root that gives us the English "yoke." What yoga sets out to unite is you with
+something far wider, and far older, with roots reaching back thousands of years to the
+Vedas, India's oldest sacred texts. The word comes from the Sanskrit root *yuj* (*to yoke,
+to unite*), the same ancient root that gives us the English "yoke." What yoga sets out to unite is you with
 yourself: body with breath, breath with mind, and the restless everyday self with something
 quieter and deeper. One classic description puts it beautifully: yoga as *the journey of the
 self, through the self, to the self.*

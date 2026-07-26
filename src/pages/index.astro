@@ -94,19 +94,18 @@ const guideRoutes = [
     </div>
   </section>
 
-  <!-- ================= OUR STORY ================= -->
-  <!-- ================= MANIFESTO ================= -->
-  <section class="section manifesto">
-    <div class="wrap-narrow" data-reveal-scroll>
-      <p class="eyebrow centered">Our small idea</p>
-      <p class="manifesto__text">
-        We think the future of feeling well looks a lot like the past. Not a rejection of
-        modern life, but a <strong>reunion with older, gentler knowledge</strong>: eating
-        what the season offers, using food as medicine, moving the body it was built to
-        move, and clearing out what quietly wears us down. This is a movement back toward
-        that.
+  <!-- ================= STORY BANNER ================= -->
+  <section class="story-banner">
+    <div class="story-banner__glow" aria-hidden="true"></div>
+    <div class="wrap-narrow story-banner__inner" data-reveal-scroll>
+      <p class="eyebrow centered">Our Story</p>
+      <h2>A movement back toward <em>older, wiser ways</em></h2>
+      <p class="story-banner__text">
+        We started Our Health Movement for one reason: modern wellness had become loud,
+        expensive and complicated, while the wisdom that actually helps people feel well has
+        been quietly sitting in ancient traditions all along.
       </p>
-      <Botanical variant="wave" width={110} class="manifesto__wave" />
+      <a href="/about" class="link-arrow story-banner__link">Read our story <span class="arrow">→</span></a>
     </div>
   </section>
 
@@ -377,27 +376,51 @@ const guideRoutes = [
     }
   }
 
-  /* ---------------- manifesto ---------------- */
-  .manifesto {
+  /* ---------------- story banner ---------------- */
+  .story-banner {
+    position: relative;
+    overflow: hidden;
     text-align: center;
-    padding-block: clamp(3.5rem, 8vw, 6.5rem);
+    padding-block: clamp(3rem, 7vw, 5rem);
+    background: linear-gradient(155deg, var(--clay) 0%, var(--terracotta) 45%, var(--terracotta-deep) 100%);
+    color: #f7ecd9;
   }
-  .manifesto__text {
-    margin-top: 1.5rem;
-    font-family: var(--font-display);
-    font-size: var(--step-2);
-    font-variation-settings: 'opsz' 60, 'SOFT' 40, 'wght' 380;
-    line-height: 1.35;
-    color: var(--ink);
+  .story-banner__glow {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+      radial-gradient(60% 90% at 85% -10%, rgba(207, 147, 39, 0.35), transparent 60%),
+      radial-gradient(50% 80% at 0% 110%, rgba(42, 32, 25, 0.28), transparent 55%);
   }
-  .manifesto__text strong {
-    color: var(--terracotta-deep);
-    font-weight: inherit;
+  .story-banner__inner {
+    position: relative;
+  }
+  .story-banner .eyebrow {
+    color: #f4d8ac;
+    justify-content: center;
+  }
+  .story-banner h2 {
+    color: #fbf3e4;
+    font-size: var(--step-3);
+    margin-top: 0.6rem;
+  }
+  .story-banner h2 em {
     font-style: italic;
+    color: #f6cf93;
   }
-  .manifesto__wave {
-    color: var(--sage);
-    margin: 2rem auto 0;
+  .story-banner__text {
+    margin: 1.25rem auto 0;
+    max-width: 60ch;
+    font-size: var(--step-1);
+    line-height: 1.55;
+    color: #f2e6cf;
+  }
+  .story-banner__link {
+    display: inline-flex;
+    margin-top: 1.75rem;
+    color: #fbf3e4;
+    border-color: currentColor;
   }
 
   /* ---------------- shared block head ---------------- */
