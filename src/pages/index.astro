@@ -94,8 +94,8 @@ const guideRoutes = [
     </div>
   </section>
 
-  <!-- ================= STORY BANNER ================= -->
-  <section class="story-banner">
+  <!-- ================= OUR STORY (banner intro) ================= -->
+  <section class="story-banner" id="story">
     <div class="story-banner__glow" aria-hidden="true"></div>
     <div class="wrap-narrow story-banner__inner" data-reveal-scroll>
       <p class="eyebrow centered">Our Story</p>
@@ -105,7 +105,41 @@ const guideRoutes = [
         expensive and complicated, while the wisdom that actually helps people feel well has
         been quietly sitting in ancient traditions all along.
       </p>
-      <a href="/about" class="link-arrow story-banner__link">Read our story <span class="arrow">→</span></a>
+    </div>
+  </section>
+
+  <!-- ================= OUR STORY (full) ================= -->
+  <section class="section story-full">
+    <div class="wrap-narrow prose story-full__prose" data-reveal-scroll>
+      <p class="story-full__standfirst">
+        For most of human history, health wasn't a product. It was a way of living, woven
+        into what you ate, how you moved, when you rested, and your place in the turning of
+        the year.
+      </p>
+      <p>
+        Somewhere along the way, we traded a lot of that for convenience. Food arrived
+        stripped of its season. Movement became something you scheduled. And a growing haze of
+        synthetic fragrances, plastics and additives settled quietly into daily life. We
+        gained so much, and mislaid something, too.
+      </p>
+      <p>
+        <strong>Our Health Movement is an attempt to gather it back up.</strong> We look to
+        Ayurveda, Traditional Chinese Medicine, Yoga and other enduring traditions, not to
+        romanticise the past, but because they hold genuinely useful, time-tested ideas about
+        living well. Then we translate them into something you can actually do in a modern
+        kitchen.
+      </p>
+      <p>
+        That means seasonal, local eating. Cooking with spices that double as medicine.
+        Moving in ways the body was built for, and breathing in ways that settle the nervous
+        system. Clearing out the low-level toxic load of everyday life. And sharing all of it
+        here, in plain language, free of fads and fear, so you can take what's useful and
+        leave the rest.
+      </p>
+      <blockquote>
+        The future of feeling well looks a lot like the past: seasonal, unhurried, and deeply
+        connected to the natural world.
+      </blockquote>
     </div>
   </section>
 
@@ -454,11 +488,23 @@ const guideRoutes = [
     line-height: 1.55;
     color: #f2e6cf;
   }
-  .story-banner__link {
-    display: inline-flex;
-    margin-top: 1.75rem;
-    color: #fbf3e4;
-    border-color: currentColor;
+  /* ---------------- our story (full) ---------------- */
+  .story-full {
+    padding-block: clamp(2.5rem, 6vw, 4rem);
+  }
+  .story-full__prose {
+    max-width: 720px;
+    font-size: var(--step-1);
+  }
+  .story-full__standfirst {
+    font-family: var(--font-display);
+    font-size: var(--step-2);
+    font-variation-settings: 'opsz' 60, 'SOFT' 40, 'wght' 370;
+    line-height: 1.3;
+    color: var(--ink);
+  }
+  .story-full__prose strong {
+    color: var(--terracotta-deep);
   }
 
   /* ---------------- shared block head ---------------- */

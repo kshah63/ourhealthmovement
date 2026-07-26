@@ -5,7 +5,7 @@ const nav = [
   { label: 'Ancient Wisdom', href: '/wisdom' },
   { label: 'Eat Seasonally', href: '/eat' },
   { label: 'Guides', href: '/guides' },
-  { label: 'Our Story', href: '/about' },
+  { label: 'Our Story', href: '/#story' },
 ];
 const path = Astro.url.pathname;
 const isActive = (href: string) => path === href || (href !== '/' && path.startsWith(href));
