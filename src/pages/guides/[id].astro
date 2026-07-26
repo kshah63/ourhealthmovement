@@ -1,0 +1,198 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Botanical from '../../components/Botanical.astro';
+import GuideCard from '../../components/GuideCard.astro';
+import Newsletter from '../../components/Newsletter.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const guides = await getCollection('guides');
+  return guides.map((entry) => ({ params: { id: entry.id }, props: { entry } }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const { data } = entry;
+
+const categoryMeta: Record<string, { label: string; href: string; accent: string }> = {
+  spice: { label: 'Spice Cabinet', href: '/guides/spices', accent: 'ochre' },
+  produce: { label: 'Fruit & Veg', href: '/guides/produce', accent: 'sage' },
+  'low-tox': { label: 'Low-Tox Swaps', href: '/guides/low-tox', accent: 'clay' },
+};
+const cat = categoryMeta[data.category];
+
+const related = (await getCollection('guides'))
+  .filter((g) => g.data.category === data.category && g.id !== entry.id)
+  .sort((a, b) => a.data.order - b.data.order)
+  .slice(0, 3);
+
+const seasonLabel =
+  data.season.includes('all') || data.season.length === 0
+    ? 'Year-round'
+    : data.season.map((s) => s[0].toUpperCase() + s.slice(1)).join(' · ');
+---
+
+<Layout title={data.title} description={data.summary}>
+  <article class={`guide gc-accent--${cat.accent}`}>
+    <header class="g-hero">
+      <div class="wrap">
+        <nav class="g-crumbs">
+          <a href="/guides">Guides</a>
+          <span aria-hidden="true">/</span>
+          <a href={cat.href}>{cat.label}</a>
+        </nav>
+        <h1 data-reveal>{data.title}</h1>
+        <p class="g-summary" data-reveal style="--delay: 80ms">{data.summary}</p>
+        <div class="g-meta" data-reveal style="--delay: 150ms">
+          <span class="g-tag">{seasonLabel}</span>
+          {data.energetics && <span class="g-energetics">{data.energetics}</span>}
+        </div>
+      </div>
+    </header>
+
+    <div class="wrap g-body">
+      <div class="prose">
+        <Content />
+      </div>
+      {
+        data.tags.length > 0 && (
+          <div class="g-tags">
+            {data.tags.map((t) => (
+              <span class="g-chip">#{t}</span>
+            ))}
+          </div>
+        )
+      }
+    </div>
+
+    {
+      related.length > 0 && (
+        <section class="g-related">
+          <div class="wrap">
+            <header class="g-related__head">
+              <p class="eyebrow">More from the {cat.label.toLowerCase()}</p>
+              <Botanical variant="wave" width={90} class="g-related__wave" />
+            </header>
+            <div class="g-related__grid">
+              {related.map((g, i) => (
+                <GuideCard guide={g} index={i} />
+              ))}
+            </div>
+          </div>
+        </section>
+      )
+    }
+  </article>
+
+  <Newsletter />
+</Layout>
+
+<style>
+  .g-hero {
+    --accent: var(--ochre-deep);
+    padding-block: clamp(2rem, 5vw, 3.25rem);
+    background:
+      radial-gradient(90% 130% at 100% 0%, color-mix(in srgb, var(--accent) 14%, transparent), transparent 58%),
+      var(--paper-2);
+    border-bottom: 1px solid var(--line);
+  }
+  .gc-accent--ochre { --accent: var(--ochre-deep); }
+  .gc-accent--sage { --accent: var(--sage-deep); }
+  .gc-accent--clay { --accent: var(--clay); }
+  .g-crumbs {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    font-size: var(--step--1);
+    color: var(--ink-2);
+    margin-bottom: 1.25rem;
+  }
+  .g-crumbs a {
+    color: var(--ink-2);
+    text-decoration: none;
+    font-weight: 560;
+  }
+  .g-crumbs a:hover {
+    color: var(--accent);
+  }
+  .g-hero h1 {
+    font-size: var(--step-4);
+    color: var(--accent);
+  }
+  .g-summary {
+    margin-top: 1rem;
+    max-width: 56ch;
+    font-size: var(--step-1);
+    color: var(--ink-2);
+    line-height: 1.45;
+  }
+  .g-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+    align-items: center;
+  }
+  .g-tag {
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-weight: 640;
+    color: var(--paper);
+    background: var(--accent);
+    padding: 0.35em 0.8em;
+    border-radius: 100px;
+  }
+  .g-energetics {
+    font-family: var(--font-display);
+    font-style: italic;
+    color: var(--ink-2);
+    font-size: var(--step-0);
+  }
+
+  .g-body {
+    padding-block: clamp(2.5rem, 6vw, 4rem);
+    max-width: 760px;
+  }
+  .g-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--line);
+  }
+  .g-chip {
+    font-size: 0.8rem;
+    color: var(--ink-2);
+    background: var(--paper-2);
+    border: 1px solid var(--line);
+    padding: 0.3em 0.7em;
+    border-radius: 100px;
+  }
+
+  .g-related {
+    background: var(--paper-2);
+    border-top: 1px solid var(--line);
+    padding-block: clamp(2.5rem, 6vw, 4rem);
+  }
+  .g-related__head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.75rem;
+  }
+  .g-related__wave {
+    color: var(--sage);
+  }
+  .g-related__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.1rem;
+  }
+  @media (max-width: 820px) {
+    .g-related__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -1,0 +1,52 @@
+---
+/**
+ * Decorative hand-drawn botanical flourishes used through the site.
+ * variant: 'sprig' | 'branch' | 'seed' | 'wave'
+ */
+interface Props {
+  variant?: 'sprig' | 'branch' | 'seed' | 'wave';
+  width?: number;
+  class?: string;
+}
+const { variant = 'sprig', width = 60, class: className = '' } = Astro.props;
+---
+
+{
+  variant === 'sprig' && (
+    <svg class={className} width={width} viewBox="0 0 48 72" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" aria-hidden="true">
+      <path d="M24 70 V8" />
+      <path d="M24 54 C16 52 12 46 12 39 C20 40 24 46 24 54 Z" fill="currentColor" fill-opacity="0.1" />
+      <path d="M24 42 C32 40 36 34 36 27 C28 28 24 34 24 42 Z" fill="currentColor" fill-opacity="0.1" />
+      <path d="M24 30 C17 29 14 24 14 18 C21 19 24 24 24 30 Z" fill="currentColor" fill-opacity="0.1" />
+      <circle cx="24" cy="8" r="3" fill="currentColor" fill-opacity="0.18" />
+    </svg>
+  )
+}
+{
+  variant === 'branch' && (
+    <svg class={className} width={width} viewBox="0 0 140 40" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" aria-hidden="true">
+      <path d="M4 20 H136" />
+      <path d="M46 20 C40 12 40 8 44 4 C50 8 50 14 46 20 Z" fill="currentColor" fill-opacity="0.1" />
+      <path d="M70 20 C64 28 64 32 68 36 C74 32 74 26 70 20 Z" fill="currentColor" fill-opacity="0.1" />
+      <path d="M94 20 C88 12 88 8 92 4 C98 8 98 14 94 20 Z" fill="currentColor" fill-opacity="0.1" />
+      <circle cx="4" cy="20" r="2.4" fill="currentColor" />
+      <circle cx="136" cy="20" r="2.4" fill="currentColor" />
+    </svg>
+  )
+}
+{
+  variant === 'seed' && (
+    <svg class={className} width={width} viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" aria-hidden="true">
+      <path d="M24 6 C34 14 34 30 24 42 C14 30 14 14 24 6 Z" fill="currentColor" fill-opacity="0.08" />
+      <path d="M24 12 V38" opacity="0.7" />
+      <path d="M24 20 L30 16 M24 26 L30 22 M24 20 L18 16 M24 26 L18 22" opacity="0.7" />
+    </svg>
+  )
+}
+{
+  variant === 'wave' && (
+    <svg class={className} width={width} viewBox="0 0 120 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" aria-hidden="true">
+      <path d="M2 8 Q17 0 32 8 T62 8 T92 8 T118 8" />
+    </svg>
+  )
+}

@@ -1,0 +1,227 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Botanical from '../../components/Botanical.astro';
+import Newsletter from '../../components/Newsletter.astro';
+import { getCollection } from 'astro:content';
+
+const wisdom = (await getCollection('wisdom')).sort((a, b) => a.data.order - b.data.order);
+---
+
+<Layout
+  title="Ancient Wisdom"
+  description="Ayurveda, Traditional Chinese Medicine and Yoga — the traditions behind Our Health Movement, explained simply and put to use in modern life."
+>
+  <section class="page-hero">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal style="--delay: 0ms">Ancient Wisdom</p>
+      <h1 data-reveal style="--delay: 90ms">Three rivers,<br /><em>one source</em></h1>
+      <p class="page-hero__lede" data-reveal style="--delay: 180ms">
+        Traditions that grew up thousands of miles apart, over thousands of years, keep
+        arriving at the same quiet truths: that health is balance, that the body is whole,
+        and that we're meant to live in step with nature. Here's what each has to teach —
+        and how to use it now.
+      </p>
+      <Botanical variant="branch" width={150} class="page-hero__sprig" data-reveal style="--delay: 260ms" />
+    </div>
+  </section>
+
+  <section class="traditions-long">
+    {
+      wisdom.map((w, i) => (
+        <article class={`tlong tlong--${w.data.accent}`} data-reveal-scroll>
+          <div class="wrap tlong__grid">
+            <div class="tlong__aside">
+              <span class="tlong__num">0{i + 1}</span>
+              <h2>{w.data.title}</h2>
+              <p class="tlong__tradition">{w.data.tradition}</p>
+              <dl class="tlong__facts">
+                <div><dt>Origin</dt><dd>{w.data.origin}</dd></div>
+                <div><dt>Roots</dt><dd>{w.data.era}</dd></div>
+              </dl>
+              <a href={`/wisdom/${w.id}`} class="btn btn--ghost">
+                Read the full guide <span class="arrow">→</span>
+              </a>
+            </div>
+            <div class="tlong__main">
+              <p class="tlong__summary">{w.data.summary}</p>
+              <ul class="tlong__principles">
+                {w.data.principles.map((p) => (
+                  <li>
+                    <h3>{p.name}</h3>
+                    <p>{p.text}</p>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </article>
+      ))
+    }
+  </section>
+
+  <section class="section thread">
+    <div class="wrap-narrow" data-reveal-scroll>
+      <Botanical variant="seed" width={48} class="thread__seed" />
+      <p class="eyebrow centered">The common thread</p>
+      <h2>Different languages, one grammar</h2>
+      <p class="thread__text">
+        Notice how they rhyme. Ayurveda's doshas, TCM's elements and yoga's koshas are all
+        ways of saying the same thing: <strong>you are part of nature, not apart from it</strong>,
+        and health is the art of staying in tune with it. You don't have to choose one. Take
+        the warm breakfast from Ayurveda, the seasonal eating from Chinese Medicine, the long
+        exhale from Yoga — and build a practice that's yours.
+      </p>
+      <a href="/eat" class="link-arrow thread__link">Put it into practice — eat with the seasons <span class="arrow">→</span></a>
+    </div>
+  </section>
+
+  <Newsletter />
+</Layout>
+
+<style>
+  .page-hero {
+    padding-top: clamp(2.5rem, 6vw, 4.5rem);
+    padding-bottom: clamp(2rem, 5vw, 3.5rem);
+    position: relative;
+  }
+  .page-hero h1 {
+    font-size: var(--step-5);
+    margin-top: 0.75rem;
+  }
+  .page-hero h1 em {
+    font-style: italic;
+    color: var(--terracotta);
+  }
+  .page-hero__lede {
+    margin-top: 1.5rem;
+    max-width: 58ch;
+    font-size: var(--step-1);
+    color: var(--ink-2);
+    line-height: 1.5;
+  }
+  .page-hero__sprig {
+    color: var(--sage);
+    margin-top: 2rem;
+    opacity: 0.8;
+  }
+
+  .traditions-long {
+    border-top: 1px solid var(--line);
+  }
+  .tlong {
+    border-bottom: 1px solid var(--line);
+    padding-block: clamp(2.5rem, 6vw, 4.5rem);
+    position: relative;
+  }
+  .tlong:nth-child(even) {
+    background: var(--paper-2);
+  }
+  .tlong__grid {
+    display: grid;
+    grid-template-columns: 0.85fr 1.15fr;
+    gap: clamp(1.5rem, 4vw, 3.5rem);
+  }
+  .tlong__num {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: var(--step-3);
+    color: var(--accent, var(--terracotta));
+    opacity: 0.7;
+  }
+  .tlong--terracotta { --accent: var(--terracotta); }
+  .tlong--sage { --accent: var(--sage-deep); }
+  .tlong--ochre { --accent: var(--ochre-deep); }
+  .tlong--clay { --accent: var(--clay); }
+  .tlong__aside h2 {
+    margin-top: 0.25rem;
+  }
+  .tlong__tradition {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: var(--step-1);
+    color: var(--accent, var(--terracotta));
+    margin-top: 0.25rem;
+  }
+  .tlong__facts {
+    margin: 1.5rem 0;
+    display: flex;
+    gap: 2rem;
+  }
+  .tlong__facts dt {
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+  .tlong__facts dd {
+    margin: 0.25rem 0 0;
+    font-size: var(--step--1);
+    color: var(--ink);
+    font-weight: 560;
+  }
+  .tlong__summary {
+    font-family: var(--font-display);
+    font-size: var(--step-2);
+    font-variation-settings: 'opsz' 50, 'SOFT' 40, 'wght' 370;
+    line-height: 1.35;
+    color: var(--ink);
+    margin-bottom: 2rem;
+  }
+  .tlong__principles {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem 2rem;
+  }
+  .tlong__principles h3 {
+    font-size: var(--step-0);
+    font-family: var(--font-body);
+    font-weight: 680;
+    letter-spacing: 0.01em;
+    color: var(--accent, var(--terracotta));
+    margin-bottom: 0.3rem;
+    padding-left: 1rem;
+    border-left: 2px solid var(--accent, var(--terracotta));
+  }
+  .tlong__principles p {
+    font-size: var(--step--1);
+    color: var(--ink-2);
+    line-height: 1.55;
+    padding-left: 1rem;
+  }
+
+  .thread {
+    text-align: center;
+  }
+  .thread__seed {
+    color: var(--terracotta);
+    margin: 0 auto 1.25rem;
+  }
+  .thread h2 {
+    margin-top: 0.5rem;
+  }
+  .thread__text {
+    margin: 1.25rem auto 0;
+    font-size: var(--step-1);
+    color: var(--ink-2);
+    line-height: 1.55;
+  }
+  .thread__text strong {
+    color: var(--terracotta-deep);
+  }
+  .thread__link {
+    margin: 1.75rem auto 0;
+    color: var(--terracotta-deep);
+  }
+
+  @media (max-width: 820px) {
+    .tlong__grid {
+      grid-template-columns: 1fr;
+    }
+    .tlong__principles {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

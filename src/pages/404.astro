@@ -1,0 +1,50 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Botanical from '../components/Botanical.astro';
+---
+
+<Layout title="Page not found" description="This path seems to have grown over.">
+  <section class="nf">
+    <div class="wrap-narrow nf__inner">
+      <Botanical variant="sprig" width={64} class="nf__sprig" />
+      <p class="eyebrow centered">Lost the path</p>
+      <h1>This trail has grown over</h1>
+      <p class="nf__text">
+        The page you're looking for isn't here — but there's plenty of good wisdom nearby.
+        Let's get you back on the path.
+      </p>
+      <div class="nf__links">
+        <a href="/" class="btn btn--terracotta">Back to the start <span class="arrow">→</span></a>
+        <a href="/wisdom" class="btn btn--ghost">Ancient wisdom</a>
+        <a href="/eat" class="btn btn--ghost">Eat with the seasons</a>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .nf {
+    text-align: center;
+    padding-block: clamp(4rem, 12vw, 8rem);
+  }
+  .nf__sprig {
+    color: var(--sage);
+    margin: 0 auto 1.5rem;
+  }
+  .nf h1 {
+    font-size: var(--step-4);
+    margin-top: 0.5rem;
+  }
+  .nf__text {
+    margin: 1.25rem auto 2rem;
+    max-width: 44ch;
+    color: var(--ink-2);
+    font-size: var(--step-1);
+  }
+  .nf__links {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+</style>

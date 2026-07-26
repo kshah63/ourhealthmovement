@@ -1,0 +1,507 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Botanical from '../components/Botanical.astro';
+import Newsletter from '../components/Newsletter.astro';
+import { seasons } from '../data/seasonal.ts';
+---
+
+<Layout
+  title="Eat With the Seasons"
+  description="A season-by-season guide to eating locally and in tune with your body — the oldest, simplest nutrition advice there is, drawn from Ayurveda and Chinese Medicine."
+>
+  <section class="page-hero">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Seasonal &amp; Local Eating</p>
+      <h1 data-reveal style="--delay: 80ms">Eat with<br /><em>the seasons</em></h1>
+      <p class="page-hero__lede" data-reveal style="--delay: 160ms">
+        Before there were labels and supplements, there was this: eat what grows around you,
+        now. Seasonal, local food is fresher, cheaper and kinder to the planet — and both
+        Ayurveda and Chinese Medicine have said for millennia that it's exactly what the body
+        wants, season to season.
+      </p>
+
+      <div class="hemi" data-reveal style="--delay: 240ms" role="group" aria-label="Choose your hemisphere">
+        <span class="hemi__label">I'm in the</span>
+        <div class="hemi__toggle">
+          <button type="button" data-hemi="north" class="is-on">Northern hemisphere</button>
+          <button type="button" data-hemi="south">Southern hemisphere</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- season tabs -->
+  <section class="seasons">
+    <div class="wrap">
+      <div class="season-tabs" role="tablist" aria-label="Seasons">
+        {
+          seasons.map((s, i) => (
+            <button
+              role="tab"
+              id={`tab-${s.key}`}
+              aria-controls={`panel-${s.key}`}
+              aria-selected={i === 0 ? 'true' : 'false'}
+              class={`season-tab season-tab--${s.accent}`}
+              data-tab={s.key}
+            >
+              <span class="season-tab__name">{s.name}</span>
+              <span class="season-tab__tag">{s.tagline}</span>
+              <span class="season-tab__now">Now</span>
+            </button>
+          ))
+        }
+      </div>
+
+      {
+        seasons.map((s, i) => (
+          <div
+            role="tabpanel"
+            id={`panel-${s.key}`}
+            aria-labelledby={`tab-${s.key}`}
+            class={`panel panel--${s.accent}`}
+            data-panel={s.key}
+            hidden={i !== 0}
+          >
+            <div class="panel__grid">
+              <div class="panel__intro">
+                <div class="panel__season-head">
+                  <h2>{s.name}</h2>
+                  <span class="panel__months" data-months={s.key}>{s.months.north}</span>
+                </div>
+                <p class="panel__quality">{s.quality}</p>
+                <p class="panel__guidance">{s.guidance}</p>
+
+                <div class="panel__energetics">
+                  <div><span class="k">Chinese Medicine</span><span class="v">{s.element} · {s.organ}</span></div>
+                  <div><span class="k">Ayurveda</span><span class="v">{s.dosha}</span></div>
+                </div>
+
+                <div class="panel__favour">
+                  <p class="panel__favour-label">Favour this season</p>
+                  <ul>
+                    {s.favour.map((f) => <li>{f}</li>)}
+                  </ul>
+                </div>
+              </div>
+
+              <div class="panel__produce">
+                <div class="produce-group">
+                  <h3><span aria-hidden="true">✦</span> In-season vegetables</h3>
+                  <div class="chips">
+                    {s.vegetables.map((v) => <span class="chip">{v}</span>)}
+                  </div>
+                </div>
+                <div class="produce-group">
+                  <h3><span aria-hidden="true">✦</span> In-season fruit</h3>
+                  <div class="chips">
+                    {s.fruit.map((f) => <span class="chip chip--fruit">{f}</span>)}
+                  </div>
+                </div>
+                <Botanical variant="branch" width={140} class="panel__sprig" />
+                <a href="/guides/produce" class="link-arrow panel__link">
+                  Explore the produce guides <span class="arrow">→</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="section why">
+    <div class="wrap why__grid">
+      <div class="why__head" data-reveal-scroll>
+        <p class="eyebrow">Why it works</p>
+        <h2>Nature is a good nutritionist</h2>
+      </div>
+      <ul class="why__list" data-reveal-scroll>
+        <li>
+          <strong>It's fresher — and more nourishing.</strong>
+          Produce eaten close to harvest keeps more of its flavour and nutrients than food
+          picked early and shipped across the world.
+        </li>
+        <li>
+          <strong>It matches what your body needs.</strong>
+          Cooling, watery foods arrive in summer; warming roots in winter. The season grows
+          the antidote to itself.
+        </li>
+        <li>
+          <strong>It's cheaper and kinder.</strong>
+          In-season, local food costs less and travels less — better for your budget and the
+          planet both.
+        </li>
+        <li>
+          <strong>It brings back variety.</strong>
+          Eating with the seasons naturally rotates your plate through the year, feeding a
+          more diverse, resilient gut.
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <Newsletter />
+</Layout>
+
+<style>
+  .page-hero {
+    padding-top: clamp(2.5rem, 6vw, 4.5rem);
+    padding-bottom: clamp(1.5rem, 4vw, 2.5rem);
+  }
+  .page-hero h1 {
+    font-size: var(--step-5);
+    margin-top: 0.6rem;
+  }
+  .page-hero h1 em {
+    font-style: italic;
+    color: var(--terracotta);
+  }
+  .page-hero__lede {
+    margin-top: 1.5rem;
+    max-width: 60ch;
+    font-size: var(--step-1);
+    color: var(--ink-2);
+    line-height: 1.5;
+  }
+  .hemi {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+  }
+  .hemi__label {
+    font-size: var(--step--1);
+    color: var(--ink-2);
+    font-weight: 560;
+  }
+  .hemi__toggle {
+    display: inline-flex;
+    background: var(--paper-2);
+    border: 1px solid var(--line);
+    border-radius: 100px;
+    padding: 3px;
+  }
+  .hemi__toggle button {
+    font: inherit;
+    font-size: var(--step--1);
+    font-weight: 560;
+    padding: 0.5em 1.1em;
+    border: 0;
+    background: none;
+    border-radius: 100px;
+    cursor: pointer;
+    color: var(--ink-2);
+    transition: background 0.2s ease, color 0.2s ease;
+  }
+  .hemi__toggle button.is-on {
+    background: var(--forest);
+    color: #f4ead6;
+  }
+
+  .seasons {
+    padding-bottom: clamp(3rem, 7vw, 5rem);
+  }
+  .season-tabs {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.6rem;
+    margin-bottom: 1.75rem;
+  }
+  .season-tab {
+    position: relative;
+    text-align: left;
+    padding: 1rem 1.1rem;
+    border: 1px solid var(--line);
+    border-top: 3px solid var(--tab, var(--terracotta));
+    border-radius: var(--radius);
+    background: var(--paper-2);
+    cursor: pointer;
+    font: inherit;
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    transition: transform 0.2s ease, background 0.2s ease;
+  }
+  .season-tab--sage { --tab: var(--sage-deep); }
+  .season-tab--ochre { --tab: var(--ochre-deep); }
+  .season-tab--clay { --tab: var(--clay); }
+  .season-tab--terracotta { --tab: var(--terracotta); }
+  .season-tab:hover {
+    transform: translateY(-2px);
+  }
+  .season-tab[aria-selected='true'] {
+    background: var(--forest);
+  }
+  .season-tab[aria-selected='true'] .season-tab__name {
+    color: #f4ead6;
+  }
+  .season-tab[aria-selected='true'] .season-tab__tag {
+    color: #c8bda3;
+  }
+  .season-tab__name {
+    font-family: var(--font-display);
+    font-size: var(--step-1);
+    color: var(--ink);
+  }
+  .season-tab__tag {
+    font-size: 0.8rem;
+    color: var(--ink-2);
+  }
+  .season-tab__now {
+    position: absolute;
+    top: 0.85rem;
+    right: 0.9rem;
+    font-size: 0.62rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-weight: 680;
+    color: var(--forest);
+    background: var(--ochre);
+    padding: 0.2em 0.55em;
+    border-radius: 100px;
+    opacity: 0;
+  }
+  .season-tab.is-now .season-tab__now {
+    opacity: 1;
+  }
+
+  .panel {
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    overflow: hidden;
+    background: var(--paper-2);
+  }
+  .panel__grid {
+    display: grid;
+    grid-template-columns: 1.15fr 1fr;
+  }
+  .panel__intro {
+    padding: clamp(1.75rem, 4vw, 2.75rem);
+  }
+  .panel__season-head {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .panel__season-head h2 {
+    font-size: var(--step-3);
+    color: var(--tab-color, var(--terracotta));
+  }
+  .panel--sage { --tab-color: var(--sage-deep); }
+  .panel--ochre { --tab-color: var(--ochre-deep); }
+  .panel--clay { --tab-color: var(--clay); }
+  .panel--terracotta { --tab-color: var(--terracotta); }
+  .panel__months {
+    font-size: var(--step--1);
+    color: var(--ink-2);
+    font-weight: 560;
+  }
+  .panel__quality {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: var(--step-1);
+    color: var(--ink);
+    margin-top: 0.75rem;
+    line-height: 1.35;
+  }
+  .panel__guidance {
+    margin-top: 1rem;
+    color: var(--ink-2);
+    line-height: 1.65;
+  }
+  .panel__energetics {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+  .panel__energetics div {
+    flex: 1;
+    padding: 0.85rem 1rem;
+    background: rgba(42, 32, 25, 0.04);
+    border-radius: var(--radius);
+    border-left: 2px solid var(--tab-color, var(--terracotta));
+  }
+  .panel__energetics .k {
+    display: block;
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+  .panel__energetics .v {
+    display: block;
+    font-weight: 560;
+    color: var(--ink);
+    margin-top: 0.2rem;
+    font-size: var(--step--1);
+  }
+  .panel__favour {
+    margin-top: 1.5rem;
+  }
+  .panel__favour-label {
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 640;
+    color: var(--tab-color, var(--terracotta));
+    margin-bottom: 0.6rem;
+  }
+  .panel__favour ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 0.4rem;
+  }
+  .panel__favour li {
+    position: relative;
+    padding-left: 1.4rem;
+    font-size: var(--step--1);
+    color: var(--ink-2);
+  }
+  .panel__favour li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.55em;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--tab-color, var(--terracotta));
+  }
+
+  .panel__produce {
+    padding: clamp(1.75rem, 4vw, 2.75rem);
+    background: var(--forest);
+    color: #d9cfb8;
+    position: relative;
+  }
+  .produce-group + .produce-group {
+    margin-top: 1.75rem;
+  }
+  .panel__produce h3 {
+    font-family: var(--font-body);
+    font-size: var(--step--1);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ochre);
+    font-weight: 640;
+    margin-bottom: 0.85rem;
+  }
+  .chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+  }
+  .chip {
+    font-size: 0.85rem;
+    padding: 0.4em 0.85em;
+    border-radius: 100px;
+    background: rgba(236, 228, 211, 0.08);
+    border: 1px solid rgba(236, 228, 211, 0.16);
+    color: #e7dcc4;
+  }
+  .chip--fruit {
+    background: rgba(207, 147, 39, 0.14);
+    border-color: rgba(207, 147, 39, 0.3);
+    color: #f0d9a6;
+  }
+  .panel__sprig {
+    color: var(--sage);
+    opacity: 0.7;
+    margin-top: 2rem;
+  }
+  .panel__link {
+    display: inline-flex;
+    margin-top: 1.25rem;
+    color: var(--ochre);
+    border-color: currentColor;
+  }
+
+  .why__grid {
+    display: grid;
+    grid-template-columns: 0.7fr 1.3fr;
+    gap: clamp(1.5rem, 4vw, 3.5rem);
+  }
+  .why__head h2 {
+    margin-top: 0.5rem;
+  }
+  .why__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+  .why__list li {
+    padding-top: 1rem;
+    border-top: 2px solid var(--sage);
+    color: var(--ink-2);
+    font-size: var(--step--1);
+    line-height: 1.6;
+  }
+  .why__list strong {
+    display: block;
+    color: var(--ink);
+    font-size: var(--step-0);
+    margin-bottom: 0.35rem;
+  }
+
+  @media (max-width: 820px) {
+    .panel__grid {
+      grid-template-columns: 1fr;
+    }
+    .season-tabs {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .why__grid,
+    .why__list {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<script>
+  import { seasons, seasonForMonth } from '../data/seasonal.ts';
+  import type { SeasonKey } from '../data/seasonal.ts';
+
+  const monthsByKey = Object.fromEntries(seasons.map((s) => [s.key, s.months]));
+  let hemisphere: 'north' | 'south' = 'north';
+
+  const tabs = Array.from(document.querySelectorAll<HTMLButtonElement>('.season-tab'));
+  const panels = Array.from(document.querySelectorAll<HTMLElement>('[data-panel]'));
+
+  function selectTab(key: string) {
+    tabs.forEach((t) => t.setAttribute('aria-selected', String(t.dataset.tab === key)));
+    panels.forEach((p) => (p.hidden = p.dataset.panel !== key));
+  }
+
+  function markNow() {
+    const nowKey = seasonForMonth(new Date().getMonth(), hemisphere);
+    tabs.forEach((t) => t.classList.toggle('is-now', t.dataset.tab === nowKey));
+    // update month labels for hemisphere
+    document.querySelectorAll<HTMLElement>('[data-months]').forEach((el) => {
+      const key = el.dataset.months as SeasonKey;
+      el.textContent = monthsByKey[key][hemisphere];
+    });
+    return nowKey;
+  }
+
+  tabs.forEach((t) => t.addEventListener('click', () => selectTab(t.dataset.tab!)));
+
+  document.querySelectorAll<HTMLButtonElement>('[data-hemi]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      hemisphere = btn.dataset.hemi as 'north' | 'south';
+      document.querySelectorAll('[data-hemi]').forEach((b) => b.classList.toggle('is-on', b === btn));
+      const nowKey = markNow();
+      selectTab(nowKey);
+    });
+  });
+
+  // on load: jump to the current season
+  const start = markNow();
+  selectTab(start);
+</script>

@@ -1,0 +1,86 @@
+---
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  title?: string;
+  description?: string;
+  /** relative path for social image, defaults to the generated OG card */
+  ogImage?: string;
+}
+
+const {
+  title,
+  description = 'Ancient wisdom for modern life — Ayurveda, Traditional Chinese Medicine and Yoga, translated into seasonal eating, everyday guides and a podcast worth listening to.',
+  ogImage = '/og-default.png',
+} = Astro.props;
+
+const siteName = 'Our Health Movement';
+const fullTitle = title ? `${title} · ${siteName}` : `${siteName} — Ancient wisdom, modern life`;
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
+const ogUrl = new URL(ogImage, Astro.site).href;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Add .js early so reveal animations only hide content when JS can restore it -->
+    <script is:inline>
+      document.documentElement.classList.add('js');
+    </script>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href={canonical} />
+    <meta name="generator" content={Astro.generator} />
+
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#33402c" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={siteName} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogUrl} />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogUrl} />
+
+    <link rel="sitemap" href="/sitemap-index.xml" />
+  </head>
+  <body>
+    <a href="#main" class="visually-hidden">Skip to content</a>
+    <span id="top"></span>
+    <Header />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer />
+
+    <script>
+      // Hero elements animate on load; everything below the fold reveals on scroll.
+      document.documentElement.classList.add('reveal-in');
+      const io = new IntersectionObserver(
+        (entries) => {
+          for (const entry of entries) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-in');
+              io.unobserve(entry.target);
+            }
+          }
+        },
+        { rootMargin: '0px 0px -8% 0px', threshold: 0.06 },
+      );
+      requestAnimationFrame(() => {
+        document.querySelectorAll('[data-reveal-scroll]').forEach((el) => io.observe(el));
+      });
+    </script>
+  </body>
+</html>

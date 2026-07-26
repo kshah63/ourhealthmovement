@@ -1,0 +1,379 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Botanical from '../../components/Botanical.astro';
+import Newsletter from '../../components/Newsletter.astro';
+import { getCollection } from 'astro:content';
+
+const episodes = (await getCollection('podcast'))
+  .filter((e) => e.data.published)
+  .sort((a, b) => b.data.episode - a.data.episode);
+
+const [latest, ...rest] = episodes;
+const dateFmt = (d: Date) =>
+  d.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+---
+
+<Layout
+  title="The Podcast"
+  description="Unhurried conversations with teachers, practitioners and healers on Yoga, Ayurveda, fascia health and living well — from Our Health Movement."
+>
+  <section class="page-hero">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>The Podcast</p>
+      <h1 data-reveal style="--delay: 80ms">Conversations worth<br /><em>slowing down for</em></h1>
+      <p class="page-hero__lede" data-reveal style="--delay: 160ms">
+        Long, thoughtful talks with the teachers and practitioners keeping ancient wisdom
+        alive — on yoga and the nervous system, Ayurveda through the seasons, fascia health
+        and more. A new episode at the turn of each season.
+      </p>
+      <div class="listen-on" data-reveal style="--delay: 220ms">
+        <span>Listen on</span>
+        <a href="#" aria-label="Apple Podcasts">Apple Podcasts</a>
+        <a href="#" aria-label="Spotify">Spotify</a>
+        <a href="#" aria-label="RSS feed">RSS</a>
+      </div>
+    </div>
+  </section>
+
+  {
+    latest && (
+      <section class="feature">
+        <div class="wrap">
+          <a href={`/podcast/${latest.id}`} class="feature__card" data-reveal-scroll>
+            <div class="feature__left">
+              <span class="feature__badge">Latest episode</span>
+              <p class="feature__num">Episode {String(latest.data.episode).padStart(2, '0')}</p>
+              <h2>{latest.data.title}</h2>
+              <p class="feature__guest">
+                with <strong>{latest.data.guest}</strong> · {latest.data.guestTitle}
+              </p>
+              <p class="feature__summary">{latest.data.summary}</p>
+              <div class="feature__meta">
+                <span class="feature__topic">{latest.data.topic}</span>
+                <span>{latest.data.duration}</span>
+                <span>{dateFmt(latest.data.date)}</span>
+              </div>
+              <span class="btn btn--terracotta feature__btn">
+                <span class="play" aria-hidden="true">▶</span> Listen &amp; read notes
+              </span>
+            </div>
+            <div class="feature__art" aria-hidden="true">
+              <div class="feature__disc">
+                <Botanical variant="seed" width={64} />
+              </div>
+            </div>
+          </a>
+        </div>
+      </section>
+    )
+  }
+
+  {
+    rest.length > 0 && (
+      <section class="section episodes">
+        <div class="wrap">
+          <header class="episodes__head" data-reveal-scroll>
+            <p class="eyebrow">The archive</p>
+            <h2>All episodes</h2>
+          </header>
+          <ul class="ep-list">
+            {rest.map((ep, i) => (
+              <li data-reveal-scroll style={`--delay: ${i * 60}ms`}>
+                <a href={`/podcast/${ep.id}`} class="ep">
+                  <span class="ep__num">{String(ep.data.episode).padStart(2, '0')}</span>
+                  <div class="ep__body">
+                    <span class="ep__topic">{ep.data.topic}</span>
+                    <h3>{ep.data.title}</h3>
+                    <p class="ep__guest">
+                      with {ep.data.guest} · {ep.data.guestTitle}
+                    </p>
+                  </div>
+                  <div class="ep__meta">
+                    <span>{ep.data.duration}</span>
+                    <span class="ep__play" aria-hidden="true">▶</span>
+                  </div>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+    )
+  }
+
+  <section class="section guest-cta">
+    <div class="wrap-narrow" data-reveal-scroll>
+      <Botanical variant="sprig" width={44} class="guest-cta__sprig" />
+      <p class="eyebrow centered">Come on the show</p>
+      <h2>Know someone with wisdom to share?</h2>
+      <p>
+        We're always looking for thoughtful guests — practitioners, teachers, growers and
+        healers working at the meeting point of ancient wisdom and modern life. If that's
+        you, or someone you know, we'd love to hear from you.
+      </p>
+      <a href="mailto:hello@ourhealthmovement.com?subject=Podcast%20guest" class="btn btn--terracotta">
+        Pitch a guest <span class="arrow">→</span>
+      </a>
+    </div>
+  </section>
+
+  <Newsletter />
+</Layout>
+
+<style>
+  .page-hero {
+    padding-top: clamp(2.5rem, 6vw, 4.5rem);
+    padding-bottom: clamp(1.5rem, 4vw, 2.5rem);
+  }
+  .page-hero h1 {
+    font-size: var(--step-5);
+    margin-top: 0.6rem;
+  }
+  .page-hero h1 em {
+    font-style: italic;
+    color: var(--terracotta);
+  }
+  .page-hero__lede {
+    margin-top: 1.5rem;
+    max-width: 58ch;
+    font-size: var(--step-1);
+    color: var(--ink-2);
+    line-height: 1.5;
+  }
+  .listen-on {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem 1rem;
+    margin-top: 1.75rem;
+    font-size: var(--step--1);
+  }
+  .listen-on span {
+    color: var(--ink-3);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 0.72rem;
+    font-weight: 640;
+  }
+  .listen-on a {
+    color: var(--ink);
+    text-decoration: none;
+    font-weight: 560;
+    border: 1px solid var(--line-strong);
+    padding: 0.35em 0.9em;
+    border-radius: 100px;
+    transition: background 0.2s ease, color 0.2s ease;
+  }
+  .listen-on a:hover {
+    background: var(--ink);
+    color: var(--paper);
+  }
+
+  .feature {
+    padding-bottom: clamp(2rem, 5vw, 3rem);
+  }
+  .feature__card {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 1rem;
+    text-decoration: none;
+    color: #ece4d3;
+    background: linear-gradient(150deg, var(--forest), var(--forest-2));
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 30px 60px -35px rgba(42, 32, 25, 0.7);
+    transition: transform 0.25s ease;
+  }
+  .feature__card:hover {
+    transform: translateY(-3px);
+    color: #ece4d3;
+  }
+  .feature__left {
+    padding: clamp(1.75rem, 4vw, 3rem);
+  }
+  .feature__badge {
+    display: inline-block;
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 640;
+    color: var(--forest);
+    background: var(--ochre);
+    padding: 0.3em 0.75em;
+    border-radius: 100px;
+  }
+  .feature__num {
+    margin-top: 1.25rem;
+    font-size: var(--step--1);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ochre);
+    font-weight: 620;
+  }
+  .feature__card h2 {
+    color: #f4ead6;
+    font-size: var(--step-3);
+    margin-top: 0.35rem;
+    line-height: 1.1;
+  }
+  .feature__guest {
+    margin-top: 0.75rem;
+    color: #cbc0a7;
+  }
+  .feature__guest strong {
+    color: #f4ead6;
+  }
+  .feature__summary {
+    margin-top: 1rem;
+    color: #c8bda3;
+    max-width: 52ch;
+    line-height: 1.6;
+  }
+  .feature__meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem 1rem;
+    align-items: center;
+    margin-top: 1.5rem;
+    font-size: var(--step--1);
+    color: #a89d84;
+  }
+  .feature__topic {
+    color: var(--ochre);
+    font-weight: 620;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    font-size: 0.72rem;
+  }
+  .feature__btn {
+    margin-top: 1.75rem;
+  }
+  .feature__btn .play {
+    font-size: 0.7em;
+  }
+  .feature__art {
+    position: relative;
+    display: grid;
+    place-items: center;
+    background:
+      radial-gradient(circle at 50% 40%, rgba(207, 147, 39, 0.25), transparent 60%);
+  }
+  .feature__disc {
+    width: min(200px, 60%);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    color: var(--ochre);
+    background:
+      repeating-radial-gradient(circle at 50% 50%, rgba(236, 228, 211, 0.06) 0 3px, transparent 3px 8px),
+      var(--forest);
+    border: 1px solid rgba(236, 228, 211, 0.14);
+    box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.4);
+  }
+
+  .episodes__head {
+    margin-bottom: 1.75rem;
+  }
+  .episodes__head h2 {
+    margin-top: 0.5rem;
+  }
+  .ep-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    border-top: 1px solid var(--line);
+  }
+  .ep {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 1.25rem;
+    align-items: center;
+    padding: 1.4rem 0.5rem;
+    border-bottom: 1px solid var(--line);
+    text-decoration: none;
+    color: var(--ink);
+    transition: background 0.2s ease, padding-left 0.2s ease;
+  }
+  .ep:hover {
+    background: var(--paper-2);
+    padding-left: 1rem;
+  }
+  .ep__num {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: var(--step-2);
+    color: var(--terracotta);
+  }
+  .ep__topic {
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--sage-deep);
+    font-weight: 640;
+  }
+  .ep__body h3 {
+    font-size: var(--step-1);
+    margin-top: 0.15rem;
+  }
+  .ep__guest {
+    color: var(--ink-2);
+    font-size: var(--step--1);
+    margin-top: 0.2rem;
+  }
+  .ep__meta {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: var(--ink-2);
+    font-size: var(--step--1);
+  }
+  .ep__play {
+    width: 38px;
+    height: 38px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    border: 1px solid var(--line-strong);
+    font-size: 0.7rem;
+    color: var(--terracotta);
+    transition: background 0.2s ease, color 0.2s ease;
+  }
+  .ep:hover .ep__play {
+    background: var(--terracotta);
+    color: var(--paper);
+  }
+
+  .guest-cta {
+    text-align: center;
+  }
+  .guest-cta__sprig {
+    color: var(--sage);
+    margin: 0 auto 1rem;
+  }
+  .guest-cta h2 {
+    margin-top: 0.5rem;
+  }
+  .guest-cta p {
+    margin: 1rem auto 1.75rem;
+    max-width: 52ch;
+    color: var(--ink-2);
+  }
+
+  @media (max-width: 760px) {
+    .feature__card {
+      grid-template-columns: 1fr;
+    }
+    .feature__art {
+      min-height: 160px;
+      order: -1;
+    }
+    .ep {
+      grid-template-columns: auto 1fr;
+    }
+    .ep__meta {
+      grid-column: 2;
+      justify-content: flex-start;
+    }
+  }
+</style>

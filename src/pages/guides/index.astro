@@ -1,0 +1,158 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Botanical from '../../components/Botanical.astro';
+import GuideCard from '../../components/GuideCard.astro';
+import Newsletter from '../../components/Newsletter.astro';
+import { getCollection } from 'astro:content';
+
+const guides = await getCollection('guides');
+const byCat = (cat: string) =>
+  guides.filter((g) => g.data.category === cat).sort((a, b) => a.data.order - b.data.order);
+
+const categories = [
+  {
+    key: 'spice',
+    href: '/guides/spices',
+    label: 'The Spice Cabinet',
+    blurb:
+      'The everyday spices that Ayurveda and Chinese Medicine treated as medicine — how to use them, and why they matter.',
+    accent: 'ochre',
+  },
+  {
+    key: 'produce',
+    href: '/guides/produce',
+    label: 'Fruit & Veg',
+    blurb: 'Season-by-season guides to eating local — what to choose, when, and the simplest ways to enjoy it.',
+    accent: 'sage',
+  },
+  {
+    key: 'low-tox',
+    href: '/guides/low-tox',
+    label: 'Low-Tox Swaps',
+    blurb: 'Small, practical changes around the home that quietly lower your daily chemical load — most of them cheaper, too.',
+    accent: 'clay',
+  },
+];
+---
+
+<Layout
+  title="Guides"
+  description="Practical guides to spices, seasonal produce and low-tox living — wisdom you can use tonight."
+>
+  <section class="page-hero">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Everyday Guides</p>
+      <h1 data-reveal style="--delay: 80ms">Wisdom you can<br /><em>use tonight</em></h1>
+      <p class="page-hero__lede" data-reveal style="--delay: 160ms">
+        No jargon, no lectures — just clear, practical guides for the spice drawer, the veg
+        box and the rest of the house. Start anywhere.
+      </p>
+    </div>
+  </section>
+
+  {
+    categories.map((cat) => {
+      const items = byCat(cat.key);
+      return (
+        <section class={`cat cat--${cat.accent}`} id={cat.key}>
+          <div class="wrap">
+            <header class="cat__head" data-reveal-scroll>
+              <div class="cat__title">
+                <Botanical variant="branch" width={64} class="cat__sprig" />
+                <div>
+                  <h2>{cat.label}</h2>
+                  <p>{cat.blurb}</p>
+                </div>
+              </div>
+              <a href={cat.href} class="link-arrow cat__all">
+                All {items.length} guides <span class="arrow">→</span>
+              </a>
+            </header>
+            <div class="cat__grid">
+              {items.map((g, i) => (
+                <GuideCard guide={g} index={i} />
+              ))}
+            </div>
+          </div>
+        </section>
+      );
+    })
+  }
+
+  <Newsletter />
+</Layout>
+
+<style>
+  .page-hero {
+    padding-top: clamp(2.5rem, 6vw, 4.5rem);
+    padding-bottom: clamp(1.5rem, 4vw, 2.5rem);
+  }
+  .page-hero h1 {
+    font-size: var(--step-5);
+    margin-top: 0.6rem;
+  }
+  .page-hero h1 em {
+    font-style: italic;
+    color: var(--terracotta);
+  }
+  .page-hero__lede {
+    margin-top: 1.5rem;
+    max-width: 52ch;
+    font-size: var(--step-1);
+    color: var(--ink-2);
+    line-height: 1.5;
+  }
+  .cat {
+    padding-block: clamp(2.5rem, 6vw, 4rem);
+    border-top: 1px solid var(--line);
+  }
+  .cat:nth-child(even) {
+    background: var(--paper-2);
+  }
+  .cat__head {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+  }
+  .cat__title {
+    display: flex;
+    gap: 1.25rem;
+    align-items: flex-start;
+    max-width: 60ch;
+  }
+  .cat__sprig {
+    color: var(--sage-deep);
+    flex: none;
+    margin-top: 0.35rem;
+  }
+  .cat__title h2 {
+    font-size: var(--step-3);
+  }
+  .cat__title p {
+    color: var(--ink-2);
+    margin-top: 0.5rem;
+    font-size: var(--step-0);
+  }
+  .cat__all {
+    color: var(--terracotta-deep);
+    white-space: nowrap;
+  }
+  .cat__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.1rem;
+  }
+  @media (max-width: 900px) {
+    .cat__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (max-width: 600px) {
+    .cat__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

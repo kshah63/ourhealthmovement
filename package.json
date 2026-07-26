@@ -1,0 +1,24 @@
+{
+  "name": "ourhealthmovement",
+  "type": "module",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Our Health Movement — ancient wisdom for modern life. Ayurveda, TCM & Yoga, seasonal eating, guides and a podcast.",
+  "engines": {
+    "node": ">=18.20.8"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/mdx": "^7.0.3",
+    "@astrojs/sitemap": "^3.7.3",
+    "@fontsource-variable/fraunces": "^5.3.0",
+    "@fontsource-variable/hanken-grotesk": "^5.3.0",
+    "astro": "^7.1.3"
+  }
+}

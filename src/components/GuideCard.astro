@@ -1,0 +1,95 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  guide: CollectionEntry<'guides'>;
+  index?: number;
+}
+const { guide, index = 0 } = Astro.props;
+const { data } = guide;
+
+const accentByCategory: Record<string, string> = {
+  spice: 'ochre',
+  produce: 'sage',
+  'low-tox': 'clay',
+};
+const accent = accentByCategory[data.category] ?? 'terracotta';
+const seasonLabel =
+  data.season.includes('all') || data.season.length === 0
+    ? 'Year-round'
+    : data.season.map((s) => s[0].toUpperCase() + s.slice(1)).join(' · ');
+---
+
+<a href={`/guides/${guide.id}`} class={`gc gc--${accent}`} data-reveal-scroll style={`--delay: ${index * 70}ms`}>
+  <div class="gc__head">
+    <span class="gc__season">{seasonLabel}</span>
+    <span class="gc__index">{String(index + 1).padStart(2, '0')}</span>
+  </div>
+  <h3>{data.title}</h3>
+  <p class="gc__summary">{data.summary}</p>
+  {data.energetics && <p class="gc__energetics">{data.energetics}</p>}
+  <span class="link-arrow">Read the guide <span class="arrow">→</span></span>
+</a>
+
+<style>
+  .gc {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1.6rem 1.5rem 1.4rem;
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--accent, var(--terracotta));
+    border-radius: var(--radius);
+    background: var(--paper-2);
+    text-decoration: none;
+    color: var(--ink);
+    transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+  }
+  .gc--ochre { --accent: var(--ochre-deep); }
+  .gc--sage { --accent: var(--sage-deep); }
+  .gc--clay { --accent: var(--clay); }
+  .gc--terracotta { --accent: var(--terracotta); }
+  .gc:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 38px -26px rgba(42, 32, 25, 0.5);
+    color: var(--ink);
+  }
+  .gc__head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .gc__season {
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-weight: 640;
+    color: var(--accent);
+  }
+  .gc__index {
+    font-family: var(--font-display);
+    font-style: italic;
+    color: var(--ink-3);
+  }
+  .gc h3 {
+    font-size: var(--step-2);
+    margin-top: 0.25rem;
+  }
+  .gc__summary {
+    color: var(--ink-2);
+    font-size: var(--step--1);
+    line-height: 1.55;
+  }
+  .gc__energetics {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 0.9rem;
+    color: var(--ink-2);
+    padding-top: 0.35rem;
+  }
+  .gc .link-arrow {
+    margin-top: 0.6rem;
+    color: var(--accent);
+    border-color: currentColor;
+  }
+</style>

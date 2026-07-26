@@ -1,0 +1,199 @@
+---
+import BrandMark from './BrandMark.astro';
+import Botanical from './Botanical.astro';
+
+const year = new Date().getFullYear();
+
+const columns = [
+  {
+    title: 'Explore',
+    links: [
+      { label: 'Ancient Wisdom', href: '/wisdom' },
+      { label: 'Eat Seasonally', href: '/eat' },
+      { label: 'The Podcast', href: '/podcast' },
+      { label: 'About the Movement', href: '/about' },
+    ],
+  },
+  {
+    title: 'Guides',
+    links: [
+      { label: 'Spice Cabinet', href: '/guides/spices' },
+      { label: 'Fruit & Veg', href: '/guides/produce' },
+      { label: 'Low-Tox Swaps', href: '/guides/low-tox' },
+      { label: 'All Guides', href: '/guides' },
+    ],
+  },
+];
+---
+
+<footer class="site-footer dark">
+  <div class="wrap">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <a href="/" class="footer__logo" aria-label="Our Health Movement — home">
+          <BrandMark size={44} />
+          <span>Our Health<br /><em>Movement</em></span>
+        </a>
+        <p class="footer__manifesto">
+          Timeless practices from Ayurveda, Traditional Chinese Medicine and Yoga —
+          translated into how we eat, move and live with the seasons.
+        </p>
+        <Botanical variant="branch" width={130} class="footer__sprig" />
+      </div>
+
+      <div class="footer__cols">
+        {
+          columns.map((col) => (
+            <nav class="footer__col" aria-label={col.title}>
+              <h3>{col.title}</h3>
+              <ul>
+                {col.links.map((l) => (
+                  <li>
+                    <a href={l.href}>{l.label}</a>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          ))
+        }
+        <div class="footer__col">
+          <h3>Stay close</h3>
+          <ul>
+            <li><a href="/#newsletter">The Seasonal Letter</a></li>
+            <li><a href="/podcast">Listen to the podcast</a></li>
+            <li><a href="mailto:hello@ourhealthmovement.com">hello@ourhealthmovement.com</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <hr class="footer__rule" />
+
+    <p class="footer__disclaimer">
+      <strong>A note on wellbeing.</strong> Everything here is shared for education and inspiration,
+      drawing on traditional practices and their modern study. It is not medical advice and isn't a
+      substitute for care from a qualified practitioner. Please check with your doctor before making
+      changes — especially if you are pregnant, nursing, taking medication or managing a health condition.
+    </p>
+
+    <div class="footer__bottom">
+      <p>© {year} Our Health Movement. Made with care for the seasons.</p>
+      <p class="footer__credit">Ancient wisdom, modern life.</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    padding-block: clamp(3rem, 7vw, 5.5rem) 2rem;
+    background: var(--forest);
+    color: #d9cfb8;
+  }
+  .footer__top {
+    display: grid;
+    grid-template-columns: 1.1fr 1.4fr;
+    gap: clamp(2rem, 5vw, 4rem);
+  }
+  .footer__logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.7rem;
+    color: #f4ead6;
+    text-decoration: none;
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    line-height: 1;
+  }
+  .footer__logo :global(svg) {
+    color: var(--ochre);
+  }
+  .footer__logo em {
+    color: var(--ochre);
+    font-style: italic;
+  }
+  .footer__manifesto {
+    margin-top: 1.25rem;
+    max-width: 34ch;
+    color: #c8bda3;
+    font-size: var(--step-0);
+  }
+  .footer__sprig {
+    margin-top: 1.5rem;
+    color: var(--sage);
+    opacity: 0.8;
+  }
+  .footer__cols {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem 2rem;
+  }
+  .footer__col h3 {
+    font-family: var(--font-body);
+    font-size: var(--step--1);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ochre);
+    font-weight: 620;
+    margin-bottom: 1rem;
+  }
+  .footer__col ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+  .footer__col a {
+    color: #d9cfb8;
+    text-decoration: none;
+    font-size: var(--step-0);
+    transition: color 0.18s ease;
+  }
+  .footer__col a:hover {
+    color: #fff;
+  }
+  .footer__rule {
+    border: 0;
+    height: 1px;
+    background: rgba(236, 228, 211, 0.16);
+    margin: clamp(2.5rem, 5vw, 3.5rem) 0 1.75rem;
+  }
+  .footer__disclaimer {
+    font-size: var(--step--1);
+    color: #b6ab92;
+    max-width: 92ch;
+    line-height: 1.7;
+  }
+  .footer__disclaimer strong {
+    color: #e7dcc4;
+  }
+  .footer__bottom {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    font-size: var(--step--1);
+    color: #a89d84;
+  }
+  .footer__credit {
+    font-family: var(--font-display);
+    font-style: italic;
+    color: var(--sage);
+  }
+
+  @media (max-width: 780px) {
+    .footer__top {
+      grid-template-columns: 1fr;
+    }
+    .footer__cols {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (max-width: 440px) {
+    .footer__cols {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

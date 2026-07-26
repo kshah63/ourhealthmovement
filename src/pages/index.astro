@@ -1,0 +1,819 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Newsletter from '../components/Newsletter.astro';
+import Botanical from '../components/Botanical.astro';
+import BrandMark from '../components/BrandMark.astro';
+import { getCollection } from 'astro:content';
+import { seasons } from '../data/seasonal.ts';
+
+const wisdom = (await getCollection('wisdom')).sort((a, b) => a.data.order - b.data.order);
+const episodes = (await getCollection('podcast'))
+  .filter((e) => e.data.published)
+  .sort((a, b) => b.data.episode - a.data.episode);
+const latest = episodes[0];
+
+const guideRoutes = [
+  {
+    label: 'The Spice Cabinet',
+    href: '/guides/spices',
+    blurb: 'Turmeric, ginger, cinnamon & more — how to use them, and why they matter.',
+    accent: 'ochre',
+  },
+  {
+    label: 'Fruit & Veg',
+    href: '/guides/produce',
+    blurb: 'What to eat, and when — a season-by-season guide to eating local.',
+    accent: 'sage',
+  },
+  {
+    label: 'Low-Tox Swaps',
+    href: '/guides/low-tox',
+    blurb: 'Small, simple changes at home that quietly lower your daily exposure.',
+    accent: 'clay',
+  },
+];
+---
+
+<Layout>
+  <!-- ================= HERO ================= -->
+  <section class="hero">
+    <div class="hero__glow" aria-hidden="true"></div>
+    <div class="wrap hero__grid">
+      <div class="hero__copy">
+        <p class="eyebrow" data-reveal style="--delay: 0ms">Ayurveda · Chinese Medicine · Yoga</p>
+        <h1 data-reveal style="--delay: 90ms">
+          Ancient wisdom,<br />
+          for a <em>modern</em> life.
+        </h1>
+        <p class="hero__lede" data-reveal style="--delay: 200ms">
+          A slower, wiser way to look after yourself — drawing on traditions thousands of
+          years old, and translating them into how we eat, move and live with the seasons
+          today.
+        </p>
+        <div class="hero__actions" data-reveal style="--delay: 300ms">
+          <a href="/wisdom" class="btn btn--terracotta">Explore the wisdom <span class="arrow">→</span></a>
+          <a href="/podcast" class="btn btn--ghost">Listen to the podcast</a>
+        </div>
+        <ul class="hero__pills" data-reveal style="--delay: 400ms">
+          <li>Seasonal &amp; local eating</li>
+          <li>Spice &amp; produce guides</li>
+          <li>Low-tox living</li>
+        </ul>
+      </div>
+
+      <div class="hero__art" data-reveal style="--delay: 250ms" aria-hidden="true">
+        <div class="hero__seal">
+          <svg viewBox="0 0 200 200" class="hero__seal-text">
+            <defs>
+              <path id="circle" d="M100,100 m-74,0 a74,74 0 1,1 148,0 a74,74 0 1,1 -148,0" />
+            </defs>
+            <text>
+              <textPath href="#circle" startOffset="0">
+                · ROOTED IN TRADITION · GROWING WITH THE SEASONS
+              </textPath>
+            </text>
+          </svg>
+          <div class="hero__seal-mark"><BrandMark size={78} /></div>
+        </div>
+        <Botanical variant="sprig" width={70} class="hero__sprig hero__sprig--1" />
+        <Botanical variant="sprig" width={54} class="hero__sprig hero__sprig--2" />
+      </div>
+    </div>
+    <div class="hero__ticker" aria-hidden="true">
+      <div class="hero__ticker-track">
+        <span>Eat with the season</span><span aria-hidden="true">✦</span>
+        <span>Breathe deeper</span><span aria-hidden="true">✦</span>
+        <span>Cook with spices</span><span aria-hidden="true">✦</span>
+        <span>Move every day</span><span aria-hidden="true">✦</span>
+        <span>Choose low-tox</span><span aria-hidden="true">✦</span>
+        <span>Rest in winter</span><span aria-hidden="true">✦</span>
+        <span>Eat with the season</span><span aria-hidden="true">✦</span>
+        <span>Breathe deeper</span><span aria-hidden="true">✦</span>
+        <span>Cook with spices</span><span aria-hidden="true">✦</span>
+        <span>Move every day</span><span aria-hidden="true">✦</span>
+        <span>Choose low-tox</span><span aria-hidden="true">✦</span>
+        <span>Rest in winter</span><span aria-hidden="true">✦</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= MANIFESTO ================= -->
+  <section class="section manifesto">
+    <div class="wrap-narrow" data-reveal-scroll>
+      <p class="eyebrow centered">Our small idea</p>
+      <p class="manifesto__text">
+        We think the future of feeling well looks a lot like the past. Not a rejection of
+        modern life — but a <strong>reunion with older, gentler knowledge</strong>: eating
+        what the season offers, using food as medicine, moving the body it was built to
+        move, and clearing out what quietly wears us down. This is a movement back toward
+        that.
+      </p>
+      <Botanical variant="wave" width={110} class="manifesto__wave" />
+    </div>
+  </section>
+
+  <!-- ================= THE THREE TRADITIONS ================= -->
+  <section class="section wisdom-block" id="wisdom">
+    <div class="wrap">
+      <header class="block-head" data-reveal-scroll>
+        <div>
+          <p class="eyebrow">Ancient Wisdom</p>
+          <h2>Three rivers, one source</h2>
+        </div>
+        <p class="block-head__note">
+          Ayurveda, Traditional Chinese Medicine and Yoga grew up worlds apart, yet they
+          arrive at the same quiet truths — balance, breath, and living in step with nature.
+        </p>
+      </header>
+
+      <div class="traditions">
+        {
+          wisdom.map((w, i) => (
+            <a href={`/wisdom/${w.id}`} class={`tcard tcard--${w.data.accent}`} data-reveal-scroll style={`--delay: ${i * 90}ms`}>
+              <span class="tcard__index">0{i + 1}</span>
+              <h3>{w.data.title}</h3>
+              <p class="tcard__tradition">{w.data.tradition}</p>
+              <p class="tcard__summary">{w.data.summary}</p>
+              <span class="tcard__origin">{w.data.origin} · {w.data.era}</span>
+              <span class="link-arrow">Read more <span class="arrow">→</span></span>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SEASONAL SPOTLIGHT ================= -->
+  <section class="section seasonal dark" id="seasonal">
+    <div class="wrap">
+      <header class="block-head block-head--light" data-reveal-scroll>
+        <div>
+          <p class="eyebrow">Eat with the Seasons</p>
+          <h2 data-season-title>Right now, we're in season</h2>
+        </div>
+        <p class="block-head__note">
+          The oldest nutrition advice there is: eat what's growing around you, now.
+          <a href="/eat" data-season-link>See the full seasonal guide →</a>
+        </p>
+      </header>
+
+      <div class="season-cards">
+        {
+          seasons.map((s) => (
+            <article class={`scard scard--${s.accent}`} data-season-card={s.key} data-reveal-scroll>
+              <div class="scard__top">
+                <h3>{s.name}</h3>
+                <span class="scard__now">In season now</span>
+              </div>
+              <p class="scard__tagline">{s.tagline}</p>
+              <p class="scard__months">{s.months.north}</p>
+              <ul class="scard__list">
+                {[...s.vegetables.slice(0, 4), ...s.fruit.slice(0, 2)].map((item) => (
+                  <li>{item}</li>
+                ))}
+              </ul>
+              <p class="scard__energy">
+                <span>{s.element} element</span> · <span>{s.dosha}</span>
+              </p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= GUIDES ================= -->
+  <section class="section guides-block">
+    <div class="wrap">
+      <header class="block-head" data-reveal-scroll>
+        <div>
+          <p class="eyebrow">Everyday Guides</p>
+          <h2>Wisdom you can use tonight</h2>
+        </div>
+        <p class="block-head__note">
+          Practical, no-nonsense guides — for the spice drawer, the veg box and the rest of
+          the house.
+        </p>
+      </header>
+
+      <div class="guide-routes">
+        {
+          guideRoutes.map((g, i) => (
+            <a href={g.href} class={`gcard gcard--${g.accent}`} data-reveal-scroll style={`--delay: ${i * 90}ms`}>
+              <div class="gcard__icon"><Botanical variant="branch" width={72} /></div>
+              <h3>{g.label}</h3>
+              <p>{g.blurb}</p>
+              <span class="link-arrow">Open the guide <span class="arrow">→</span></span>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= PODCAST ================= -->
+  {
+    latest && (
+      <section class="section podcast-teaser" id="podcast">
+        <div class="wrap podcast-teaser__grid">
+          <div class="podcast-teaser__intro" data-reveal-scroll>
+            <p class="eyebrow">The Podcast</p>
+            <h2>Conversations worth slowing down for</h2>
+            <p>
+              Long, unhurried talks with teachers, practitioners and healers — on yoga,
+              Ayurveda, fascia health and living well. New episodes at the turn of each
+              season.
+            </p>
+            <a href="/podcast" class="btn btn--terracotta">All episodes <span class="arrow">→</span></a>
+          </div>
+
+          <a href={`/podcast/${latest.id}`} class="episode-feature" data-reveal-scroll>
+            <span class="episode-feature__badge">Latest · Ep {latest.data.episode}</span>
+            <div class="episode-feature__play" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="26" height="26"><path d="M8 5v14l11-7z" fill="currentColor" /></svg>
+            </div>
+            <div class="episode-feature__body">
+              <p class="episode-feature__topic">{latest.data.topic}</p>
+              <h3>{latest.data.title}</h3>
+              <p class="episode-feature__guest">
+                with {latest.data.guest} · {latest.data.guestTitle}
+              </p>
+              <p class="episode-feature__meta">{latest.data.duration}</p>
+            </div>
+          </a>
+        </div>
+      </section>
+    )
+  }
+
+  <Newsletter />
+</Layout>
+
+<style>
+  /* ---------------- hero ---------------- */
+  .hero {
+    position: relative;
+    padding-top: clamp(2.5rem, 6vw, 5rem);
+    overflow: hidden;
+  }
+  .hero__glow {
+    position: absolute;
+    top: -20%;
+    right: -5%;
+    width: 60%;
+    aspect-ratio: 1;
+    background: radial-gradient(circle, rgba(207, 147, 39, 0.22), transparent 62%);
+    pointer-events: none;
+    z-index: 0;
+  }
+  .hero__grid {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: clamp(1.5rem, 4vw, 3rem);
+    align-items: center;
+    padding-bottom: clamp(2.5rem, 6vw, 4.5rem);
+  }
+  .hero h1 {
+    font-size: var(--step-5);
+    font-variation-settings: 'opsz' 144, 'SOFT' 20, 'wght' 400;
+    margin-top: 1rem;
+    letter-spacing: -0.02em;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--terracotta);
+    font-variation-settings: 'opsz' 144, 'SOFT' 80, 'wght' 380;
+  }
+  .hero__lede {
+    margin-top: 1.5rem;
+    max-width: 46ch;
+    font-size: var(--step-1);
+    color: var(--ink-2);
+    line-height: 1.5;
+  }
+  .hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 2rem;
+  }
+  .hero__pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.5rem;
+    list-style: none;
+    padding: 0;
+    margin: 2.25rem 0 0;
+    font-size: var(--step--1);
+    color: var(--ink-2);
+  }
+  .hero__pills li {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    font-weight: 560;
+  }
+  .hero__pills li::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--sage);
+  }
+
+  .hero__art {
+    position: relative;
+    display: grid;
+    place-items: center;
+    min-height: 340px;
+  }
+  .hero__seal {
+    position: relative;
+    width: min(340px, 78%);
+    aspect-ratio: 1;
+    display: grid;
+    place-items: center;
+  }
+  .hero__seal-text {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    animation: spin 46s linear infinite;
+    fill: var(--sage-deep);
+    font-family: var(--font-body);
+    font-size: 11.2px;
+    font-weight: 620;
+    letter-spacing: 0.14em;
+  }
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  .hero__seal-mark {
+    color: var(--terracotta);
+    display: grid;
+    place-items: center;
+    width: 62%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: radial-gradient(circle at 40% 35%, var(--paper-2), var(--paper-3));
+    box-shadow: inset 0 2px 14px rgba(42, 32, 25, 0.12), 0 18px 40px -22px rgba(42, 32, 25, 0.5);
+  }
+  .hero__sprig {
+    position: absolute;
+    color: var(--sage);
+    opacity: 0.75;
+  }
+  .hero__sprig--1 {
+    top: -4%;
+    left: 2%;
+    transform: rotate(-18deg);
+  }
+  .hero__sprig--2 {
+    bottom: -6%;
+    right: 4%;
+    transform: rotate(20deg) scaleX(-1);
+  }
+
+  .hero__ticker {
+    position: relative;
+    z-index: 1;
+    border-block: 1px solid var(--line);
+    padding-block: 0.9rem;
+    overflow: hidden;
+    background: color-mix(in srgb, var(--paper-2) 60%, transparent);
+  }
+  .hero__ticker-track {
+    display: inline-flex;
+    align-items: center;
+    gap: 2.5rem;
+    white-space: nowrap;
+    animation: ticker 34s linear infinite;
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: var(--step-1);
+    color: var(--ink-2);
+  }
+  .hero__ticker-track span:nth-child(even) {
+    color: var(--terracotta);
+    font-style: normal;
+  }
+  @keyframes ticker {
+    to {
+      transform: translateX(-50%);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hero__ticker-track,
+    .hero__seal-text {
+      animation: none;
+    }
+  }
+
+  /* ---------------- manifesto ---------------- */
+  .manifesto {
+    text-align: center;
+    padding-block: clamp(3.5rem, 8vw, 6.5rem);
+  }
+  .manifesto__text {
+    margin-top: 1.5rem;
+    font-family: var(--font-display);
+    font-size: var(--step-2);
+    font-variation-settings: 'opsz' 60, 'SOFT' 40, 'wght' 380;
+    line-height: 1.35;
+    color: var(--ink);
+  }
+  .manifesto__text strong {
+    color: var(--terracotta-deep);
+    font-weight: inherit;
+    font-style: italic;
+  }
+  .manifesto__wave {
+    color: var(--sage);
+    margin: 2rem auto 0;
+  }
+
+  /* ---------------- shared block head ---------------- */
+  .block-head {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 1.5rem 3rem;
+    align-items: end;
+    margin-bottom: clamp(2rem, 4vw, 3.25rem);
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--line);
+  }
+  .block-head h2 {
+    margin-top: 0.5rem;
+  }
+  .block-head__note {
+    max-width: 38ch;
+    color: var(--ink-2);
+    font-size: var(--step-0);
+    text-align: right;
+  }
+  .block-head--light {
+    border-color: rgba(236, 228, 211, 0.2);
+  }
+  .block-head--light .block-head__note {
+    color: #c8bda3;
+  }
+  @media (max-width: 720px) {
+    .block-head {
+      grid-template-columns: 1fr;
+    }
+    .block-head__note {
+      text-align: left;
+    }
+  }
+
+  /* ---------------- traditions ---------------- */
+  .traditions {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+  }
+  .tcard {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1.75rem 1.6rem 1.5rem;
+    background: var(--paper-2);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    text-decoration: none;
+    color: var(--ink);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    border-top: 3px solid var(--accent, var(--terracotta));
+  }
+  .tcard--terracotta {
+    --accent: var(--terracotta);
+  }
+  .tcard--sage {
+    --accent: var(--sage-deep);
+  }
+  .tcard--ochre {
+    --accent: var(--ochre-deep);
+  }
+  .tcard--clay {
+    --accent: var(--clay);
+  }
+  .tcard:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 22px 40px -26px rgba(42, 32, 25, 0.55);
+    border-color: var(--accent);
+  }
+  .tcard__index {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: var(--step-2);
+    color: var(--accent);
+    opacity: 0.85;
+  }
+  .tcard h3 {
+    font-size: var(--step-2);
+  }
+  .tcard__tradition {
+    font-family: var(--font-display);
+    font-style: italic;
+    color: var(--ink-2);
+    margin-top: -0.2rem;
+  }
+  .tcard__summary {
+    color: var(--ink-2);
+    font-size: var(--step--1);
+    line-height: 1.55;
+    margin-top: 0.4rem;
+  }
+  .tcard__origin {
+    font-size: 0.78rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin-top: 0.75rem;
+  }
+  .tcard .link-arrow {
+    margin-top: 1.1rem;
+    color: var(--accent);
+    border-color: currentColor;
+  }
+
+  /* ---------------- seasonal ---------------- */
+  .seasonal {
+    background: linear-gradient(165deg, var(--forest) 0%, var(--forest-2) 100%);
+  }
+  .season-cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+  }
+  .scard {
+    padding: 1.5rem 1.35rem;
+    border-radius: var(--radius);
+    background: rgba(244, 234, 214, 0.05);
+    border: 1px solid rgba(236, 228, 211, 0.16);
+    transition: transform 0.25s ease, background 0.25s ease, border-color 0.25s ease;
+  }
+  .scard__top {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.5rem;
+  }
+  .scard h3 {
+    color: #f4ead6;
+    font-size: var(--step-2);
+  }
+  .scard__now {
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-weight: 640;
+    color: var(--forest);
+    background: var(--ochre);
+    padding: 0.25em 0.6em;
+    border-radius: 100px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  .scard__tagline {
+    font-family: var(--font-display);
+    font-style: italic;
+    color: var(--ochre);
+    margin-top: 0.25rem;
+  }
+  .scard__months {
+    font-size: 0.8rem;
+    letter-spacing: 0.03em;
+    color: #a89d84;
+    margin-top: 0.2rem;
+  }
+  .scard__list {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+  }
+  .scard__list li {
+    font-size: 0.78rem;
+    color: #d9cfb8;
+    background: rgba(236, 228, 211, 0.08);
+    padding: 0.28em 0.6em;
+    border-radius: 100px;
+  }
+  .scard__energy {
+    margin-top: 1rem;
+    font-size: 0.74rem;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: #928871;
+  }
+  .scard.is-current {
+    background: rgba(207, 147, 39, 0.14);
+    border-color: var(--ochre);
+    transform: translateY(-4px);
+  }
+  .scard.is-current .scard__now {
+    opacity: 1;
+  }
+
+  /* ---------------- guides ---------------- */
+  .guide-routes {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+  }
+  .gcard {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.6rem;
+    padding: 2rem 1.75rem;
+    border-radius: var(--radius);
+    text-decoration: none;
+    color: var(--ink);
+    background: var(--paper-2);
+    border: 1px solid var(--line);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+  .gcard::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(120% 80% at 100% 0%, var(--tint, rgba(207, 147, 39, 0.14)), transparent 55%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  .gcard--ochre {
+    --tint: rgba(207, 147, 39, 0.18);
+  }
+  .gcard--sage {
+    --tint: rgba(139, 154, 112, 0.22);
+  }
+  .gcard--clay {
+    --tint: rgba(198, 122, 69, 0.2);
+  }
+  .gcard:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 22px 42px -26px rgba(42, 32, 25, 0.5);
+  }
+  .gcard:hover::after {
+    opacity: 1;
+  }
+  .gcard__icon {
+    color: var(--sage-deep);
+    position: relative;
+  }
+  .gcard h3 {
+    font-size: var(--step-2);
+    position: relative;
+  }
+  .gcard p {
+    color: var(--ink-2);
+    font-size: var(--step--1);
+    position: relative;
+  }
+  .gcard .link-arrow {
+    margin-top: 0.4rem;
+    color: var(--terracotta-deep);
+    position: relative;
+  }
+
+  /* ---------------- podcast teaser ---------------- */
+  .podcast-teaser__grid {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: clamp(1.5rem, 4vw, 3.5rem);
+    align-items: center;
+  }
+  .podcast-teaser__intro h2 {
+    margin: 0.5rem 0 1rem;
+  }
+  .podcast-teaser__intro p {
+    color: var(--ink-2);
+    max-width: 40ch;
+    margin-bottom: 1.75rem;
+  }
+  .episode-feature {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 1.25rem;
+    align-items: center;
+    padding: 1.75rem;
+    border-radius: var(--radius);
+    text-decoration: none;
+    color: #ece4d3;
+    background: linear-gradient(150deg, var(--sage-deep), var(--forest));
+    position: relative;
+    box-shadow: 0 26px 50px -30px rgba(42, 32, 25, 0.7);
+    transition: transform 0.25s ease;
+  }
+  .episode-feature:hover {
+    transform: translateY(-3px);
+    color: #ece4d3;
+  }
+  .episode-feature__badge {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-weight: 640;
+    color: var(--forest);
+    background: var(--ochre);
+    padding: 0.3em 0.7em;
+    border-radius: 100px;
+  }
+  .episode-feature__play {
+    width: 66px;
+    height: 66px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: var(--ochre);
+    color: var(--forest);
+    flex: none;
+    transition: transform 0.25s ease;
+  }
+  .episode-feature:hover .episode-feature__play {
+    transform: scale(1.06);
+  }
+  .episode-feature__topic {
+    font-size: 0.74rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ochre);
+    font-weight: 620;
+  }
+  .episode-feature h3 {
+    color: #f4ead6;
+    font-size: var(--step-1);
+    margin: 0.35rem 0;
+    line-height: 1.15;
+  }
+  .episode-feature__guest {
+    color: #cbc0a7;
+    font-size: var(--step--1);
+  }
+  .episode-feature__meta {
+    color: #a89d84;
+    font-size: 0.8rem;
+    margin-top: 0.35rem;
+  }
+
+  /* ---------------- responsive ---------------- */
+  @media (max-width: 900px) {
+    .hero__grid {
+      grid-template-columns: 1fr;
+    }
+    .hero__art {
+      order: -1;
+      min-height: 260px;
+    }
+    .traditions,
+    .guide-routes {
+      grid-template-columns: 1fr;
+    }
+    .season-cards {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .podcast-teaser__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  @media (max-width: 480px) {
+    .season-cards {
+      grid-template-columns: 1fr;
+    }
+    .episode-feature {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<script>
+  import { seasonForMonth } from '../data/seasonal.ts';
+  const current = seasonForMonth(new Date().getMonth(), 'north');
+  document.querySelectorAll('[data-season-card]').forEach((el) => {
+    if (el.getAttribute('data-season-card') === current) el.classList.add('is-current');
+  });
+  const titles: Record<string, string> = {
+    spring: "It's spring — time to lighten & renew",
+    summer: "It's summer — time to cool & hydrate",
+    autumn: "It's autumn — time to ground & gather",
+    winter: "It's winter — time to warm & restore",
+  };
+  const titleEl = document.querySelector('[data-season-title]');
+  if (titleEl && titles[current]) titleEl.textContent = titles[current];
+</script>

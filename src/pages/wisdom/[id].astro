@@ -1,0 +1,250 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Botanical from '../../components/Botanical.astro';
+import Newsletter from '../../components/Newsletter.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const wisdom = await getCollection('wisdom');
+  return wisdom.map((entry) => ({ params: { id: entry.id }, props: { entry } }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const { data } = entry;
+
+const others = (await getCollection('wisdom'))
+  .filter((w) => w.id !== entry.id)
+  .sort((a, b) => a.data.order - b.data.order);
+---
+
+<Layout title={`${data.title} — ${data.tradition}`} description={data.summary}>
+  <article class={`wisdom-article wisdom-article--${data.accent}`}>
+    <header class="wa-hero">
+      <div class="wrap">
+        <a href="/wisdom" class="wa-back">← Ancient Wisdom</a>
+        <p class="eyebrow" data-reveal>{data.tradition}</p>
+        <h1 data-reveal style="--delay: 80ms">{data.title}</h1>
+        <p class="wa-hero__summary" data-reveal style="--delay: 160ms">{data.summary}</p>
+        <dl class="wa-facts" data-reveal style="--delay: 220ms">
+          <div><dt>Origin</dt><dd>{data.origin}</dd></div>
+          <div><dt>Roots</dt><dd>{data.era}</dd></div>
+        </dl>
+      </div>
+    </header>
+
+    <div class="wrap wa-body">
+      <aside class="wa-principles">
+        <p class="wa-principles__label">At a glance</p>
+        <ul>
+          {
+            data.principles.map((p) => (
+              <li>
+                <strong>{p.name}</strong>
+                <span>{p.text}</span>
+              </li>
+            ))
+          }
+        </ul>
+        <Botanical variant="sprig" width={46} class="wa-principles__sprig" />
+      </aside>
+
+      <div class="prose wa-prose">
+        <Content />
+      </div>
+    </div>
+
+    <nav class="wa-next">
+      <div class="wrap">
+        <p class="eyebrow centered">Keep exploring</p>
+        <div class="wa-next__cards">
+          {
+            others.map((w) => (
+              <a href={`/wisdom/${w.id}`} class={`wa-next__card wa-next__card--${w.data.accent}`}>
+                <span>{w.data.tradition}</span>
+                <h3>{w.data.title}</h3>
+                <span class="link-arrow">Read <span class="arrow">→</span></span>
+              </a>
+            ))
+          }
+        </div>
+      </div>
+    </nav>
+  </article>
+
+  <Newsletter />
+</Layout>
+
+<style>
+  .wa-hero {
+    --accent: var(--terracotta);
+    padding-block: clamp(2rem, 5vw, 3.5rem) clamp(2rem, 5vw, 3rem);
+    background:
+      radial-gradient(90% 120% at 100% 0%, color-mix(in srgb, var(--accent) 14%, transparent), transparent 60%),
+      var(--paper-2);
+    border-bottom: 1px solid var(--line);
+  }
+  .wisdom-article--terracotta { --accent: var(--terracotta); }
+  .wisdom-article--sage { --accent: var(--sage-deep); }
+  .wisdom-article--ochre { --accent: var(--ochre-deep); }
+  .wisdom-article--clay { --accent: var(--clay); }
+  .wa-back {
+    display: inline-block;
+    font-size: var(--step--1);
+    font-weight: 560;
+    color: var(--ink-2);
+    text-decoration: none;
+    margin-bottom: 1.25rem;
+  }
+  .wa-back:hover { color: var(--terracotta); }
+  .wa-hero h1 {
+    font-size: var(--step-5);
+    margin-top: 0.4rem;
+    color: var(--accent);
+  }
+  .wa-hero__summary {
+    margin-top: 1.25rem;
+    max-width: 54ch;
+    font-size: var(--step-1);
+    color: var(--ink-2);
+    line-height: 1.45;
+  }
+  .wa-facts {
+    display: flex;
+    gap: 2.5rem;
+    margin-top: 1.75rem;
+  }
+  .wa-facts dt {
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+  .wa-facts dd {
+    margin: 0.2rem 0 0;
+    font-weight: 560;
+    color: var(--ink);
+  }
+
+  .wa-body {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: clamp(2rem, 5vw, 4rem);
+    padding-block: clamp(2.5rem, 6vw, 4.5rem);
+    align-items: start;
+  }
+  .wa-principles {
+    position: sticky;
+    top: 92px;
+    padding: 1.5rem;
+    background: var(--paper-2);
+    border: 1px solid var(--line);
+    border-top: 3px solid var(--accent);
+    border-radius: var(--radius);
+  }
+  .wa-principles__label {
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-weight: 640;
+    color: var(--accent);
+    margin-bottom: 1rem;
+  }
+  .wa-principles ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .wa-principles li {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--line);
+  }
+  .wa-principles li:last-child {
+    border-bottom: 0;
+    padding-bottom: 0;
+  }
+  .wa-principles strong {
+    font-size: var(--step-0);
+    color: var(--ink);
+  }
+  .wa-principles span {
+    font-size: 0.82rem;
+    color: var(--ink-2);
+    line-height: 1.5;
+  }
+  .wa-principles__sprig {
+    color: var(--sage);
+    margin-top: 1.25rem;
+    opacity: 0.7;
+  }
+
+  .wa-next {
+    background: var(--forest);
+    color: #ece4d3;
+    padding-block: clamp(2.5rem, 6vw, 4rem);
+  }
+  .wa-next .eyebrow {
+    color: var(--ochre);
+    justify-content: center;
+    display: flex;
+    margin-bottom: 1.5rem;
+  }
+  .wa-next__cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    max-width: 720px;
+    margin-inline: auto;
+  }
+  .wa-next__card {
+    --accent: var(--ochre);
+    padding: 1.5rem;
+    border-radius: var(--radius);
+    background: rgba(244, 234, 214, 0.06);
+    border: 1px solid rgba(236, 228, 211, 0.16);
+    text-decoration: none;
+    color: #ece4d3;
+    transition: transform 0.2s ease, background 0.2s ease;
+  }
+  .wa-next__card--terracotta { --accent: #e08a63; }
+  .wa-next__card--sage { --accent: #a9b78c; }
+  .wa-next__card--ochre { --accent: var(--ochre); }
+  .wa-next__card:hover {
+    transform: translateY(-3px);
+    background: rgba(244, 234, 214, 0.1);
+    color: #ece4d3;
+  }
+  .wa-next__card > span:first-child {
+    font-size: 0.74rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 620;
+  }
+  .wa-next__card h3 {
+    color: #f4ead6;
+    margin: 0.4rem 0 0.75rem;
+  }
+  .wa-next__card .link-arrow {
+    color: var(--accent);
+    font-size: var(--step--1);
+  }
+
+  @media (max-width: 820px) {
+    .wa-body {
+      grid-template-columns: 1fr;
+    }
+    .wa-principles {
+      position: static;
+    }
+    .wa-next__cards {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

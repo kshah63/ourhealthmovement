@@ -1,0 +1,121 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Botanical from './Botanical.astro';
+import GuideCard from './GuideCard.astro';
+import Newsletter from './Newsletter.astro';
+import { getCollection } from 'astro:content';
+
+interface Props {
+  category: 'spice' | 'produce' | 'low-tox';
+  eyebrow: string;
+  titleLead: string;
+  titleEm: string;
+  lede: string;
+  note?: string;
+  metaTitle: string;
+  metaDescription: string;
+}
+const { category, eyebrow, titleLead, titleEm, lede, note, metaTitle, metaDescription } = Astro.props;
+
+const guides = (await getCollection('guides'))
+  .filter((g) => g.data.category === category)
+  .sort((a, b) => a.data.order - b.data.order);
+---
+
+<Layout title={metaTitle} description={metaDescription}>
+  <section class="cp-hero">
+    <div class="wrap">
+      <a href="/guides" class="cp-back">← All guides</a>
+      <p class="eyebrow" data-reveal>{eyebrow}</p>
+      <h1 data-reveal style="--delay: 80ms">{titleLead} <em>{titleEm}</em></h1>
+      <p class="cp-hero__lede" data-reveal style="--delay: 160ms">{lede}</p>
+      <Botanical variant="branch" width={150} class="cp-hero__sprig" data-reveal style="--delay: 240ms" />
+    </div>
+  </section>
+
+  <section class="section cp-list">
+    <div class="wrap">
+      <div class="cp-grid">
+        {guides.map((g, i) => <GuideCard guide={g} index={i} />)}
+      </div>
+      {
+        note && (
+          <p class="cp-note" data-reveal-scroll>
+            <span aria-hidden="true">✦</span> {note}
+          </p>
+        )
+      }
+    </div>
+  </section>
+
+  <Newsletter />
+</Layout>
+
+<style>
+  .cp-hero {
+    padding-top: clamp(2rem, 5vw, 3.5rem);
+    padding-bottom: clamp(1.5rem, 4vw, 2.5rem);
+  }
+  .cp-back {
+    display: inline-block;
+    font-size: var(--step--1);
+    font-weight: 560;
+    color: var(--ink-2);
+    text-decoration: none;
+    margin-bottom: 1.25rem;
+  }
+  .cp-back:hover {
+    color: var(--terracotta);
+  }
+  .cp-hero h1 {
+    font-size: var(--step-5);
+    margin-top: 0.4rem;
+  }
+  .cp-hero h1 em {
+    font-style: italic;
+    color: var(--terracotta);
+  }
+  .cp-hero__lede {
+    margin-top: 1.5rem;
+    max-width: 58ch;
+    font-size: var(--step-1);
+    color: var(--ink-2);
+    line-height: 1.5;
+  }
+  .cp-hero__sprig {
+    color: var(--sage);
+    margin-top: 1.75rem;
+    opacity: 0.8;
+  }
+  .cp-list {
+    padding-top: 0;
+  }
+  .cp-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.1rem;
+  }
+  .cp-note {
+    margin-top: 2.5rem;
+    padding: 1.25rem 1.5rem;
+    background: var(--paper-2);
+    border-left: 3px solid var(--sage);
+    border-radius: var(--radius);
+    color: var(--ink-2);
+    font-size: var(--step--1);
+    max-width: 80ch;
+  }
+  .cp-note span {
+    color: var(--sage-deep);
+  }
+  @media (max-width: 900px) {
+    .cp-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (max-width: 600px) {
+    .cp-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

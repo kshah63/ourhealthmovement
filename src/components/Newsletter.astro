@@ -1,0 +1,169 @@
+---
+import Botanical from './Botanical.astro';
+
+/**
+ * Newsletter sign-up.
+ * To go live, create a free form at https://formspree.io (or use Buttondown /
+ * ConvertKit / Mailchimp) and replace FORMSPREE_ID below with your form id.
+ * Until then the form shows a friendly "not connected yet" note to the owner.
+ */
+const FORMSPREE_ID = 'FORMSPREE_ID'; // e.g. 'xdorwkyz'
+const endpoint = `https://formspree.io/f/${FORMSPREE_ID}`;
+---
+
+<section class="news dark" id="newsletter" data-reveal-scroll>
+  <div class="wrap news__inner">
+    <Botanical variant="seed" width={54} class="news__seed" />
+    <p class="eyebrow centered">The Seasonal Letter</p>
+    <h2>One thoughtful note, at the turn of each season</h2>
+    <p class="news__lede">
+      What's coming into season, a spice to lean on, a low-tox swap worth making, and the next
+      podcast episode — sent when the season shifts, never more. No noise, no selling your inbox.
+    </p>
+
+    <form class="news__form" data-endpoint={endpoint} data-placeholder={FORMSPREE_ID}>
+      <label class="visually-hidden" for="news-email">Email address</label>
+      <input
+        id="news-email"
+        type="email"
+        name="email"
+        inputmode="email"
+        autocomplete="email"
+        placeholder="you@example.com"
+        required
+      />
+      <button type="submit" class="btn btn--terracotta">
+        Subscribe <span class="arrow">→</span>
+      </button>
+    </form>
+    <p class="news__status" role="status" aria-live="polite"></p>
+    <p class="news__fineprint">Free forever. Unsubscribe in one click.</p>
+  </div>
+</section>
+
+<style>
+  .news {
+    background: linear-gradient(160deg, var(--forest) 0%, var(--forest-2) 100%);
+    position: relative;
+    overflow: hidden;
+    padding-block: clamp(3.5rem, 8vw, 6rem);
+  }
+  .news::after {
+    /* soft sun-glow bottom-right */
+    content: '';
+    position: absolute;
+    right: -10%;
+    bottom: -40%;
+    width: 55%;
+    aspect-ratio: 1;
+    background: radial-gradient(circle, rgba(207, 147, 39, 0.28), transparent 62%);
+    pointer-events: none;
+  }
+  .news__inner {
+    text-align: center;
+    max-width: 640px;
+    position: relative;
+  }
+  .news__seed {
+    color: var(--ochre);
+    margin: 0 auto 1.25rem;
+  }
+  .news h2 {
+    margin-top: 0.5rem;
+    font-size: var(--step-3);
+  }
+  .news__lede {
+    margin: 1.25rem auto 0;
+    color: #cbc0a7;
+    max-width: 52ch;
+  }
+  .news__form {
+    display: flex;
+    gap: 0.6rem;
+    margin: 2rem auto 0;
+    max-width: 460px;
+  }
+  .news__form input {
+    flex: 1;
+    font: inherit;
+    font-size: var(--step-0);
+    padding: 0.85em 1.1em;
+    border-radius: 100px;
+    border: 1px solid rgba(236, 228, 211, 0.28);
+    background: rgba(244, 234, 214, 0.06);
+    color: #f4ead6;
+  }
+  .news__form input::placeholder {
+    color: #9c927b;
+  }
+  .news__form input:focus-visible {
+    outline: 2px solid var(--ochre);
+    outline-offset: 2px;
+    background: rgba(244, 234, 214, 0.12);
+  }
+  .news__form .btn {
+    flex: none;
+  }
+  .news__status {
+    margin-top: 1rem;
+    min-height: 1.3em;
+    font-size: var(--step--1);
+    color: var(--ochre);
+    font-weight: 560;
+  }
+  .news__status.is-error {
+    color: #e9a58a;
+  }
+  .news__fineprint {
+    margin-top: 0.5rem;
+    font-size: var(--step--1);
+    color: #928871;
+  }
+  @media (max-width: 520px) {
+    .news__form {
+      flex-direction: column;
+    }
+    .news__form .btn {
+      justify-content: center;
+    }
+  }
+</style>
+
+<script>
+  const form = document.querySelector<HTMLFormElement>('.news__form');
+  const status = document.querySelector<HTMLParagraphElement>('.news__status');
+  if (form && status) {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const placeholder = form.dataset.placeholder;
+      const endpoint = form.dataset.endpoint || '';
+      const email = new FormData(form).get('email');
+
+      // Not wired to a provider yet — guide the site owner (see README / Newsletter.astro).
+      if (!endpoint || endpoint.includes(placeholder ?? '___')) {
+        status.classList.remove('is-error');
+        status.textContent = '✦ Almost ready — connect your email provider to start collecting sign-ups.';
+        return;
+      }
+
+      status.classList.remove('is-error');
+      status.textContent = 'Planting your seat…';
+      try {
+        const res = await fetch(endpoint, {
+          method: 'POST',
+          headers: { Accept: 'application/json' },
+          body: JSON.stringify({ email }),
+        });
+        if (res.ok) {
+          form.reset();
+          status.textContent = '✦ You’re on the list. See you at the turn of the season.';
+        } else {
+          throw new Error('bad response');
+        }
+      } catch {
+        status.classList.add('is-error');
+        status.textContent = 'Something went wrong — please try again in a moment.';
+      }
+    });
+  }
+</script>
