@@ -246,9 +246,11 @@ const guideRoutes = [
   <section class="section aboutme" id="about-me">
     <div class="wrap aboutme__grid" data-reveal-scroll>
       <div class="aboutme__portrait">
-        {/* To use a real photo, drop it in /public and replace this block with:
-            <img src="/about-me.jpg" alt="A portrait of the founder" /> */}
+        {/* To use a real photo, drop it in /public and replace the frame div with:
+            <img src="/about-me.jpg" alt="Pooja Shah" /> */}
         <div class="aboutme__frame" aria-hidden="true"><BrandMark size={76} /></div>
+        <p class="aboutme__name">Pooja Shah</p>
+        <p class="aboutme__role">Founder, Our Health Movement</p>
       </div>
       <div class="aboutme__copy">
         <p class="eyebrow">About Me</p>
@@ -812,6 +814,20 @@ const guideRoutes = [
   }
   .aboutme__portrait {
     flex: none;
+    text-align: center;
+  }
+  .aboutme__name {
+    margin-top: 1rem;
+    font-family: var(--font-display);
+    font-size: var(--step-1);
+    color: var(--ink);
+    line-height: 1.1;
+  }
+  .aboutme__role {
+    margin-top: 0.2rem;
+    font-size: var(--step--1);
+    letter-spacing: 0.02em;
+    color: var(--ink-2);
   }
   .aboutme__frame,
   .aboutme__portrait :global(img) {
