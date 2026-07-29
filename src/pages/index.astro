@@ -242,6 +242,35 @@ const guideRoutes = [
     </div>
   </section>
 
+  <!-- ================= ABOUT ME ================= -->
+  <section class="section aboutme" id="about-me">
+    <div class="wrap aboutme__grid" data-reveal-scroll>
+      <div class="aboutme__portrait">
+        {/* To use a real photo, drop it in /public and replace this block with:
+            <img src="/about-me.jpg" alt="A portrait of the founder" /> */}
+        <div class="aboutme__frame" aria-hidden="true"><BrandMark size={76} /></div>
+      </div>
+      <div class="aboutme__copy">
+        <p class="eyebrow">About Me</p>
+        <h2>Hello, and welcome</h2>
+        <p>
+          I'm the founder of Our Health Movement. I'm not a doctor or a guru, just someone who
+          found their way back to feeling well through the old, seasonal, unhurried wisdom this
+          whole site is built on, and who couldn't keep it to myself.
+        </p>
+        <p>
+          For now, I'm focusing on two things close to my heart: cooking with spices as
+          medicine, and eating with the seasons. Start there, and we'll grow from there
+          together.
+        </p>
+        <div class="aboutme__links">
+          <a href="/guides/spices" class="btn btn--terracotta">Explore the spice guides <span class="arrow">→</span></a>
+          <a href="/eat" class="btn btn--ghost">Eat with the seasons</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ================= JOIN / INSTAGRAM ================= -->
   <section class="section insta" id="join">
     <div class="wrap insta__grid" data-reveal-scroll>
@@ -757,6 +786,58 @@ const guideRoutes = [
     margin-top: 0.4rem;
     color: var(--terracotta-deep);
     position: relative;
+  }
+
+  /* ---------------- about me ---------------- */
+  .aboutme {
+    background: var(--paper-2);
+    border-block: 1px solid var(--line);
+  }
+  .aboutme__grid {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: clamp(1.5rem, 5vw, 3.5rem);
+    align-items: center;
+  }
+  .aboutme__portrait {
+    flex: none;
+  }
+  .aboutme__frame,
+  .aboutme__portrait :global(img) {
+    width: clamp(160px, 20vw, 220px);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  .aboutme__frame {
+    display: grid;
+    place-items: center;
+    color: var(--terracotta);
+    background: radial-gradient(circle at 40% 35%, var(--paper) 0%, var(--paper-3) 100%);
+    border: 1px solid var(--line);
+    box-shadow: inset 0 2px 18px rgba(42, 32, 25, 0.12);
+  }
+  .aboutme__copy h2 {
+    margin: 0.5rem 0 1rem;
+  }
+  .aboutme__copy p {
+    color: var(--ink-2);
+    max-width: 54ch;
+  }
+  .aboutme__copy p + p {
+    margin-top: 0.9rem;
+  }
+  .aboutme__links {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    margin-top: 1.75rem;
+  }
+  @media (max-width: 720px) {
+    .aboutme__grid {
+      grid-template-columns: 1fr;
+      justify-items: start;
+    }
   }
 
   /* ---------------- join / instagram ---------------- */
