@@ -46,11 +46,7 @@ const guideRoutes = [
           years old, and translating them into how we eat, move and live with the seasons
           today.
         </p>
-        <div class="hero__actions" data-reveal style="--delay: 300ms">
-          <a href="/wisdom" class="btn btn--terracotta">Explore the wisdom <span class="arrow">→</span></a>
-          <a href="/eat" class="btn btn--ghost">Eat with the seasons</a>
-        </div>
-        <ul class="hero__pills" data-reveal style="--delay: 400ms">
+        <ul class="hero__pills" data-reveal style="--delay: 300ms">
           <li>Seasonal &amp; local eating</li>
           <li>Spice &amp; produce guides</li>
           <li>Low-tox living</li>
@@ -156,7 +152,6 @@ const guideRoutes = [
         </div>
         <p class="block-head__note">
           The oldest nutrition advice there is: eat what's growing around you, now.
-          <a href="/eat" data-season-link>See the full seasonal guide →</a>
         </p>
       </header>
 
@@ -181,6 +176,9 @@ const guideRoutes = [
             </article>
           ))
         }
+      </div>
+      <div class="section-cta" data-reveal-scroll>
+        <a href="/eat" class="btn btn--terracotta">Eat with the seasons <span class="arrow">→</span></a>
       </div>
     </div>
   </section>
@@ -242,6 +240,9 @@ const guideRoutes = [
             </a>
           ))
         }
+      </div>
+      <div class="section-cta" data-reveal-scroll>
+        <a href="/wisdom" class="btn btn--terracotta">Explore the wisdom <span class="arrow">→</span></a>
       </div>
     </div>
   </section>
@@ -574,6 +575,10 @@ const guideRoutes = [
   }
   .block-head--light {
     border-color: rgba(236, 228, 211, 0.2);
+  }
+  .section-cta {
+    margin-top: clamp(2rem, 4vw, 2.75rem);
+    text-align: center;
   }
   .block-head--light .block-head__note {
     color: #c8bda3;
