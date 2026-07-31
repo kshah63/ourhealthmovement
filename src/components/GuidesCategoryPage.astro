@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Botanical from './Botanical.astro';
+import BrandMark from './BrandMark.astro';
 import GuideCard from './GuideCard.astro';
 import Newsletter from './Newsletter.astro';
 import { getCollection } from 'astro:content';
@@ -14,8 +15,25 @@ interface Props {
   note?: string;
   metaTitle: string;
   metaDescription: string;
+  downloadHref?: string;
+  downloadTitle?: string;
+  downloadText?: string;
+  downloadLabel?: string;
 }
-const { category, eyebrow, titleLead, titleEm, lede, note, metaTitle, metaDescription } = Astro.props;
+const {
+  category,
+  eyebrow,
+  titleLead,
+  titleEm,
+  lede,
+  note,
+  metaTitle,
+  metaDescription,
+  downloadHref,
+  downloadTitle,
+  downloadText,
+  downloadLabel,
+} = Astro.props;
 
 const guides = (await getCollection('guides'))
   .filter((g) => g.data.category === category)
@@ -38,6 +56,28 @@ const guides = (await getCollection('guides'))
       <div class="cp-grid">
         {guides.map((g, i) => <GuideCard guide={g} index={i} />)}
       </div>
+      {
+        downloadHref && (
+          <a class="cp-download" href={downloadHref} download data-reveal-scroll>
+            <span class="cp-download__mark" aria-hidden="true">
+              <BrandMark size={44} />
+            </span>
+            <span class="cp-download__body">
+              <span class="cp-download__eyebrow">Free download</span>
+              <span class="cp-download__title">{downloadTitle}</span>
+              {downloadText && <span class="cp-download__text">{downloadText}</span>}
+            </span>
+            <span class="cp-download__btn">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M12 3v12" />
+                <path d="m7 10 5 5 5-5" />
+                <path d="M5 21h14" />
+              </svg>
+              {downloadLabel ?? 'Download PDF'}
+            </span>
+          </a>
+        )
+      }
       {
         note && (
           <p class="cp-note" data-reveal-scroll>
@@ -95,8 +135,88 @@ const guides = (await getCollection('guides'))
     grid-template-columns: repeat(3, 1fr);
     gap: 1.1rem;
   }
-  .cp-note {
+  .cp-download {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
     margin-top: 2.5rem;
+    padding: 1.4rem 1.6rem;
+    background: linear-gradient(135deg, var(--terracotta) 0%, #a24726 100%);
+    border-radius: var(--radius);
+    color: var(--paper);
+    text-decoration: none;
+    box-shadow: 0 12px 30px -18px rgba(90, 40, 20, 0.7);
+    transition:
+      transform 0.25s ease,
+      box-shadow 0.25s ease;
+  }
+  .cp-download:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 18px 38px -18px rgba(90, 40, 20, 0.8);
+  }
+  .cp-download__mark {
+    flex: none;
+    display: grid;
+    place-items: center;
+    width: 68px;
+    height: 68px;
+    border-radius: 50%;
+    background: rgba(244, 234, 214, 0.14);
+    color: var(--paper);
+  }
+  .cp-download__body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    flex: 1 1 auto;
+  }
+  .cp-download__eyebrow {
+    font-size: var(--step--2);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    font-weight: 640;
+    color: rgba(244, 234, 214, 0.78);
+  }
+  .cp-download__title {
+    font-family: var(--font-display);
+    font-size: var(--step-2);
+    line-height: 1.15;
+  }
+  .cp-download__text {
+    font-size: var(--step--1);
+    color: rgba(244, 234, 214, 0.86);
+    max-width: 52ch;
+    line-height: 1.45;
+    margin-top: 0.1rem;
+  }
+  .cp-download__btn {
+    flex: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.7rem 1.1rem;
+    background: var(--paper);
+    color: var(--terracotta);
+    border-radius: 999px;
+    font-weight: 640;
+    font-size: var(--step--1);
+    white-space: nowrap;
+  }
+  .cp-download:hover .cp-download__btn {
+    background: #fff;
+  }
+  @media (max-width: 640px) {
+    .cp-download {
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .cp-download__btn {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+  .cp-note {
+    margin-top: 1.6rem;
     padding: 1.25rem 1.5rem;
     background: var(--paper-2);
     border-left: 3px solid var(--sage);
