@@ -96,11 +96,11 @@ img,svg{max-width:100%;}
 .kicker{font-size:9.5pt;letter-spacing:0.18em;text-transform:uppercase;color:#a6741a;font-weight:700;}
 .spice h1{font-family:'Fraunces',serif;font-weight:480;font-size:32pt;color:#b4552f;margin-top:3mm;letter-spacing:-0.01em;}
 .spice .meta{font-family:'Fraunces',serif;font-style:italic;font-size:12pt;color:#566043;margin-top:2mm;padding-bottom:4mm;border-bottom:1px solid rgba(42,32,25,0.18);}
-.body{margin-top:6mm;font-size:10.8pt;line-height:1.6;color:#33291f;}
-.body h2{font-family:'Hanken',sans-serif;font-weight:680;font-size:12.5pt;color:#8c3d1f;margin-top:6mm;margin-bottom:2mm;letter-spacing:0.01em;}
-.body p{margin-bottom:3mm;}
-.body ul{margin:0 0 3mm 5mm;}
-.body li{margin-bottom:1.5mm;}
+.body{margin-top:5mm;font-size:10.8pt;line-height:1.55;color:#33291f;}
+.body h2{font-family:'Hanken',sans-serif;font-weight:680;font-size:12.5pt;color:#8c3d1f;margin-top:4.5mm;margin-bottom:2mm;letter-spacing:0.01em;}
+.body p{margin-bottom:2.5mm;}
+.body ul{margin:0 0 2.5mm 5mm;}
+.body li{margin-bottom:1.3mm;}
 .body li::marker{color:#b4552f;}
 .body strong{color:#2a2019;}
 .body blockquote{margin:4mm 0;padding-left:5mm;border-left:3px solid #b4552f;font-family:'Fraunces',serif;font-style:italic;font-size:12pt;color:#5c4d3f;}

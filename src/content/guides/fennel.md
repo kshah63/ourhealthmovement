@@ -18,6 +18,15 @@ it balancing to all three doshas and one of the best spices for calm digestion, 
 bloating and cramping without heating the body. It's exactly why a little dish of fennel
 seeds appears at the end of an Indian meal.
 
+Its sweetness comes from *anethole*, the aromatic compound behind fennel's mild liquorice
+note, which both traditional systems and modern study connect to its carminative, or gas
+relieving, action: it helps relax the gut and release the trapped wind behind bloating and
+cramping. Because it cools rather than heats, fennel is the spice Ayurveda reaches for with
+acidity, heartburn and heat in the body, where warmer spices can aggravate. It gently
+freshens the breath, is a mild diuretic, and has long been offered to nursing mothers to
+support digestion and milk flow. Fennel is also a small source of fibre, vitamin C and
+minerals like potassium.
+
 ## Get the most from it
 
 - **Toast lightly.** A brief dry-roast brings out fennel's natural sweetness.
@@ -30,7 +39,10 @@ seeds appears at the end of an Indian meal.
 - **After-meal seeds.** Chew a pinch of seeds, plain or toasted, to freshen the breath and
   settle the stomach.
 - **Fennel tea.** Seeds steeped in hot water, calming for bloating and a restless tummy.
-- **In cooking.** Wonderful with fish, folded into breads, or through roasted vegetables.
+- **CCF tea.** Equal parts cumin, coriander and fennel seeds steeped in hot water, a classic
+  Ayurvedic blend for calm, steady digestion.
+- **In cooking.** Wonderful with roasted vegetables and potatoes, folded into breads, or
+  stirred through lentils and dals.
 
 ## Good to know
 

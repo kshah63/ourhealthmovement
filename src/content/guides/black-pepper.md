@@ -33,6 +33,19 @@ absorbs from other foods, most famously the curcumin in turmeric.
 - **Trikatu.** In Ayurveda, pepper joins long pepper and ginger in this warming digestive
   blend.
 
+## Dishes to try
+
+All vegetarian or vegan, and all built around pepper rather than hiding it.
+
+- **Black pepper rasam (milagu rasam).** A thin, peppery South Indian broth of tamarind,
+  tomato, crushed pepper and cumin, tempered with mustard seeds and curry leaves and sipped
+  with rice. The classic thing to reach for at the first sign of a cold. Naturally vegan.
+- **Cacio e pepe.** The Roman pasta built on almost nothing but pepper and cheese, proof
+  that black pepper can be the whole point of a dish rather than a finishing touch.
+  Vegetarian, and easily made vegan with a plant-based hard cheese.
+- **Milagu kuzhambu.** A dark, deeply savoury South Indian tamarind gravy heavy with black
+  pepper, spooned over rice, warming and comforting. Naturally vegan.
+
 ## Good to know
 
 As a kitchen spice, pepper is enjoyed freely. In large medicinal or supplement doses,

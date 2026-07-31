@@ -31,6 +31,8 @@ role in digestion and blood-sugar balance.
 
 - **Jeera water.** A teaspoon of cumin seeds simmered in water and sipped warm, a simple
   after-meal digestive.
+- **CCF tea.** Equal parts cumin, coriander and fennel seeds steeped in hot water, the
+  classic Ayurvedic digestive blend, gentle enough to sip through the day.
 - **Tempering (tadka).** Sizzle the seeds in ghee or oil to start a dal, curry or vegetable
   dish.
 - **Rice and yoghurt.** A pinch through rice, roasted vegetables, or a cooling raita.

@@ -250,8 +250,9 @@ cumin stirs in later. Its natural partners are coriander and turmeric.
 **Slide 4**
 Bring it into the day
 Jeera water: a teaspoon of seeds simmered in water and sipped warm, a simple
-after meal digestive. A tempering of seeds sizzled in ghee to start a dal. A
-pinch through rice, roasted vegetables or a cooling raita.
+after meal digestive. Or CCF tea, equal parts cumin, coriander and fennel seeds
+steeped in hot water. A tempering of seeds sizzled in ghee to start a dal. A pinch
+through rice, roasted vegetables or a cooling raita.
 
 **Slide 5**
 Good to know
@@ -306,12 +307,19 @@ over eggs, soups, salads and roasted vegetables. And trikatu, where pepper joins
 long pepper and ginger in a warming Ayurvedic digestive blend.
 
 **Slide 6**
+Dishes to try (all veg)
+Black pepper rasam, a thin, peppery South Indian broth to reach for at the first
+sign of a cold. Cacio e pepe, the Roman pasta built on almost nothing but pepper
+and cheese, easily made vegan. And milagu kuzhambu, a dark, savoury pepper and
+tamarind gravy over rice.
+
+**Slide 7**
 Good to know
 As a kitchen spice, pepper is enjoyed freely. In large medicinal or supplement
 doses, piperine can change how the body processes certain medications, so check
 with your practitioner if that applies to you.
 
-**Slide 7 (CTA)**
+**Slide 8 (CTA)**
 Save this next to your turmeric.
 Full guide and a free Know Your Spices booklet at ourhealthmovement.co.uk
 Follow @our_healthmovement for the whole series.
@@ -347,18 +355,27 @@ breath. Fennel settles the stomach and cools the system, the perfect close to a
 rich meal.
 
 **Slide 4**
-Bring it into the day
-Chew a pinch of seeds, plain or toasted, after eating. Steep them into a calming
-tea for bloating and a restless tummy. And cook with them, lovely with fish,
-folded into breads, or through roasted vegetables.
+What gives it its power
+Fennel's sweet liquorice note comes from anethole, the compound behind its
+carminative, or gas relieving, action: it relaxes the gut and releases the trapped
+wind behind bloating. It cools rather than heats, so Ayurveda reaches for it with
+acidity and heartburn, and it has long been offered to nursing mothers.
 
 **Slide 5**
+Bring it into the day
+Chew a pinch of seeds, plain or toasted, after eating. Steep them into a calming
+tea for bloating and a restless tummy. Or make CCF tea: equal parts cumin,
+coriander and fennel seeds, the classic Ayurvedic digestive blend. And cook with
+them, lovely with roasted vegetables and potatoes, folded into breads, or stirred
+through lentils and dals.
+
+**Slide 6**
 Good to know
 Fennel is gentle and widely enjoyed. Concentrated fennel extracts are much
 stronger and, as with any supplement, worth checking with your practitioner,
 particularly during pregnancy.
 
-**Slide 6 (CTA)**
+**Slide 7 (CTA)**
 Save this for after dinner.
 Full guide and a free Know Your Spices booklet at ourhealthmovement.co.uk
 Follow @our_healthmovement for the whole series.
