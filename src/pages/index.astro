@@ -121,14 +121,14 @@ const guideRoutes = [
         <strong>Our Health Movement is an attempt to gather it back up.</strong> We look to
         Ayurveda, Traditional Chinese Medicine, Yoga and other enduring traditions, not to
         romanticise the past, but because they hold genuinely useful, time-tested ideas about
-        living well. Then we translate them into something you can actually do in a modern
-        kitchen.
+        living well. Then we translate them into something we can all actually bring to our
+        everyday.
       </p>
       <p>
         That means seasonal, local eating. Cooking with spices that double as medicine.
         Moving in ways the body was built for, and breathing in ways that settle the nervous
         system. Clearing out the low-level toxic load of everyday life. And sharing all of it
-        here, in plain language, free of fads and fear, so you can take what's useful and
+        here, in plain language, free of fads and fear, so you can keep what resonates and
         leave the rest.
       </p>
       <p>
@@ -221,8 +221,10 @@ const guideRoutes = [
         <h2>Where all of this comes from</h2>
         <p class="wisdom-bridge__text">
           The seasonal eating and the everyday guides above aren't new ideas. They flow from
-          older, deeper roots: Ayurveda, Traditional Chinese Medicine and Yoga. Three
-          traditions that grew up worlds apart, yet arrive at the same quiet truths, balance,
+          older, deeper roots: Ayurveda, Traditional Chinese Medicine and Yoga. The same
+          instincts run across civilisations, from Hippocratic Greece and Persian Unani
+          medicine to Tibetan Sowa Rigpa, Japanese Kampo and the healing traditions of
+          Indigenous America and Africa. Different languages, the same quiet truths, balance,
           breath, and living in step with nature.
         </p>
       </div>
@@ -248,24 +250,58 @@ const guideRoutes = [
   </section>
 
   <!-- ================= ABOUT ME ================= -->
-  <section class="section aboutme" id="about-me">
-    <div class="wrap aboutme__grid" data-reveal-scroll>
-      <div class="aboutme__portrait">
-        <div class="aboutme__pic">
-          <img src="/about-me.jpg" width="440" height="440" loading="lazy" alt="Pooja Shah, founder of Our Health Movement" />
+  <section class="section founder" id="about-me">
+    <div class="founder__wash" aria-hidden="true"></div>
+    <div class="wrap founder__grid">
+      <div class="founder__aside" data-reveal-scroll>
+        <figure class="founder__portrait">
+          <div class="founder__stage">
+            <span class="founder__stage-rule" aria-hidden="true"></span>
+            <div class="founder__frame">
+              <img src="/about-me.jpg" width="440" height="550" loading="lazy" alt="Pooja Shah, founder of Our Health Movement" />
+            </div>
+            <span class="founder__sprig" aria-hidden="true"><Botanical variant="sprig" width={44} /></span>
+          </div>
+          <figcaption class="founder__caption">
+            <p class="founder__name">Pooja Shah</p>
+            <p class="founder__role">Founder, Our Health Movement</p>
+          </figcaption>
+        </figure>
+
+        <div class="founder__path">
+          <p class="founder__path-head">The path here</p>
+          <ol class="founder__steps">
+            <li>
+              <span class="founder__step-place">Imperial College London</span>
+              <span class="founder__step-note">Medical school</span>
+            </li>
+            <li>
+              <span class="founder__step-place">The NHS</span>
+              <span class="founder__step-note">Five years working in the health service</span>
+            </li>
+            <li>
+              <span class="founder__step-place">National Centre for Integrative Medicine</span>
+              <span class="founder__step-note">Masters in integrative health</span>
+            </li>
+            <li>
+              <span class="founder__step-place">Our Health Movement</span>
+              <span class="founder__step-note">And now, this</span>
+            </li>
+          </ol>
         </div>
-        <p class="aboutme__name">Pooja Shah</p>
-        <p class="aboutme__role">Founder, Our Health Movement</p>
       </div>
-      <div class="aboutme__copy">
+
+      <div class="founder__copy" data-reveal-scroll style="--delay: 140ms">
         <p class="eyebrow">About Me</p>
         <h2>Why I started this</h2>
-        <p>
-          I came to this through medicine. As a medical student at Imperial, and now a student
-          of integrative health at the National Centre for Integrative Medicine, I saw early
-          how much the biomedical model can do, and where it struggles, especially with the
-          long-term chronic conditions so many of us live with. What's needed isn't a
-          replacement for that model, but a wider, holistic one to work alongside it.
+        <span class="founder__rule" aria-hidden="true"><Botanical variant="branch" width={132} /></span>
+        <p class="founder__lede">
+          I came to this through medicine. I trained at Imperial, spent five years working in
+          the NHS, and I'm now studying integrative health at the National Centre for
+          Integrative Medicine. Along the way I saw how much the biomedical model can do, and
+          where it struggles, especially with the long-term chronic conditions so many of us
+          live with. What's needed isn't a replacement for that model, but a wider, holistic
+          one to work alongside it.
         </p>
         <p>
           I've come to truly believe that health is made in our kitchens and our playgrounds:
@@ -276,12 +312,13 @@ const guideRoutes = [
           run.
         </p>
         <p>
-          My hope is to grow a community where wellbeing is simply woven into the everyday, not
-          an add-on or a chore, but a natural, effortless and joyful way of being. For now, I'm
-          starting with two things close to my heart: cooking with spices, and eating with the
-          seasons. Begin there, and we'll grow from there together.
+          The aim with Our Health Movement is to grow a community where wellbeing is simply
+          woven into the everyday, not an add-on or a chore, but a natural, effortless and
+          joyful way of being. For now, I'm starting with two things close to my heart: cooking
+          with spices, and eating with the seasons. Begin there, and we'll grow from there
+          together.
         </p>
-        <div class="aboutme__links">
+        <div class="founder__links">
           <a href="/guides/spices" class="btn btn--terracotta">Explore the spice guides <span class="arrow">→</span></a>
           <a href="/eat" class="btn btn--ghost">Eat with the seasons</a>
         </div>
@@ -839,71 +876,212 @@ const guideRoutes = [
     position: relative;
   }
 
-  /* ---------------- about me ---------------- */
-  .aboutme {
-    background: var(--paper-2);
+  /* ---------------- about me (founder's letter) ---------------- */
+  .founder {
+    position: relative;
+    isolation: isolate;
+    overflow: clip;
+    background: var(--paper-3);
     border-block: 1px solid var(--line);
   }
-  .aboutme__grid {
+  .founder__wash {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background:
+      radial-gradient(65% 85% at 8% -5%, rgba(207, 147, 39, 0.2), transparent 62%),
+      radial-gradient(55% 75% at 100% 105%, rgba(139, 154, 112, 0.24), transparent 58%);
+  }
+  .founder__grid {
     display: grid;
-    grid-template-columns: auto 1fr;
-    gap: clamp(1.5rem, 5vw, 3.5rem);
-    align-items: center;
+    grid-template-columns: minmax(220px, 320px) 1fr;
+    gap: clamp(2rem, 6vw, 4.5rem);
+    align-items: start;
   }
-  .aboutme__portrait {
-    flex: none;
-    text-align: center;
+
+  /* portrait, arched apothecary frame with an offset rule behind it */
+  .founder__portrait {
+    margin: 0;
   }
-  .aboutme__name {
-    margin-top: 1rem;
-    font-family: var(--font-display);
-    font-size: var(--step-1);
-    color: var(--ink);
-    line-height: 1.1;
+  @media (min-width: 1024px) {
+    .founder__aside {
+      position: sticky;
+      top: 108px;
+    }
   }
-  .aboutme__role {
-    margin-top: 0.2rem;
-    font-size: var(--step--1);
-    letter-spacing: 0.02em;
-    color: var(--ink-2);
+  .founder__stage {
+    position: relative;
   }
-  .aboutme__pic {
-    width: clamp(168px, 21vw, 232px);
-    aspect-ratio: 1;
-    border-radius: 50%;
+  .founder__stage-rule {
+    position: absolute;
+    inset: 18px -18px -18px 18px;
+    border: 1px solid rgba(86, 96, 67, 0.42);
+    border-radius: 999px 999px var(--radius) var(--radius) / 46% 46% var(--radius) var(--radius);
+  }
+  .founder__frame {
+    position: relative;
+    aspect-ratio: 4 / 5;
     overflow: hidden;
-    margin-inline: auto;
-    border: 3px solid var(--paper);
-    box-shadow: 0 18px 38px -20px rgba(42, 32, 25, 0.55);
+    background: var(--paper-2);
+    border: 1px solid var(--line);
+    border-radius: 999px 999px var(--radius) var(--radius) / 46% 46% var(--radius) var(--radius);
+    box-shadow: 0 28px 52px -30px rgba(42, 32, 25, 0.65);
   }
-  .aboutme__pic img {
+  .founder__frame img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: 100% 42%;
-    transform: scale(1.45);
-    transform-origin: 62% 40%;
+    object-position: 100% 50%;
+    transform: scale(1.35);
+    transform-origin: 50% 72%;
   }
-  .aboutme__copy h2 {
-    margin: 0.5rem 0 1rem;
+  .founder__sprig {
+    position: absolute;
+    left: -24px;
+    bottom: 8px;
+    color: var(--sage-deep);
+    opacity: 0.8;
+    transform: rotate(-12deg);
   }
-  .aboutme__copy p {
+  .founder__caption {
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--line-strong);
+  }
+  .founder__name {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-variation-settings: 'opsz' 40, 'SOFT' 60;
+    font-size: var(--step-2);
+    line-height: 1.05;
+    color: var(--ink);
+  }
+  .founder__role {
+    margin-top: 0.5rem;
+    font-size: var(--step--1);
+    font-weight: 620;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+
+  /* the path here, a small career timeline */
+  .founder__path {
+    margin-top: clamp(1.75rem, 3vw, 2.5rem);
+  }
+  .founder__path-head {
+    font-size: var(--step--1);
+    font-weight: 620;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    margin-bottom: 1.1rem;
+  }
+  .founder__steps {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .founder__steps li {
+    position: relative;
+    padding: 0 0 1.15rem 1.75rem;
+    border-left: 1px solid var(--line-strong);
+  }
+  .founder__steps li:last-child {
+    padding-bottom: 0;
+    border-left-color: transparent;
+  }
+  .founder__steps li::before {
+    content: '';
+    position: absolute;
+    left: -4.5px;
+    top: 0.5em;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--paper-3);
+    border: 1px solid var(--sage-deep);
+  }
+  .founder__steps li:last-child::before {
+    background: var(--terracotta);
+    border-color: var(--terracotta);
+  }
+  .founder__step-place {
+    display: block;
+    font-family: var(--font-display);
+    font-size: var(--step-0);
+    line-height: 1.2;
+    color: var(--ink);
+  }
+  .founder__step-note {
+    display: block;
+    margin-top: 0.15rem;
+    font-size: var(--step--1);
+    color: var(--ink-3);
+  }
+
+  /* copy */
+  .founder__copy h2 {
+    margin-top: 0.55rem;
+  }
+  .founder__rule {
+    display: block;
+    color: var(--sage-deep);
+    opacity: 0.7;
+    margin: 1.4rem 0 1.7rem;
+  }
+  .founder__copy p {
     color: var(--ink-2);
-    max-width: 54ch;
+    max-width: 58ch;
   }
-  .aboutme__copy p + p {
-    margin-top: 0.9rem;
+  .founder__copy p + p {
+    margin-top: 1.05rem;
   }
-  .aboutme__links {
+  .founder__copy .founder__lede {
+    font-size: var(--step-1);
+    line-height: 1.55;
+    color: var(--ink);
+  }
+  .founder__copy .founder__lede::first-letter {
+    float: left;
+    font-family: var(--font-display);
+    font-variation-settings: 'opsz' 96, 'SOFT' 20;
+    font-weight: 500;
+    font-size: 3.3em;
+    line-height: 0.76;
+    padding: 0.06em 0.1em 0 0;
+    color: var(--terracotta);
+  }
+  .founder__links {
     display: flex;
     gap: 0.75rem;
     flex-wrap: wrap;
-    margin-top: 1.75rem;
+    margin-top: 2.25rem;
+    padding-top: 1.75rem;
+    border-top: 1px solid var(--line);
   }
-  @media (max-width: 720px) {
-    .aboutme__grid {
+
+  @media (max-width: 900px) {
+    .founder__grid {
       grid-template-columns: 1fr;
-      justify-items: start;
+      gap: 2.5rem;
+    }
+    .founder__portrait {
+      display: flex;
+      align-items: flex-end;
+      gap: clamp(1rem, 5vw, 1.75rem);
+    }
+    .founder__stage {
+      flex: none;
+      width: min(44vw, 220px);
+    }
+    .founder__caption {
+      margin: 0 0 0.75rem;
+      padding-top: 0;
+      border-top: 0;
+    }
+    .founder__sprig {
+      display: none;
     }
   }
 
