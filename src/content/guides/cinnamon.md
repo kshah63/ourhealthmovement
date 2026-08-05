@@ -9,6 +9,17 @@ summary: >
   blood sugar on an even keel.
 tags: [warming, blood-sugar, circulation, ceylon]
 updated: 2026-06-01
+references:
+  - text: >
+      Allen RW, Schwartzman E, Baker WL, Coleman CI, Phung OJ. Cinnamon use in type 2
+      diabetes: an updated systematic review and meta-analysis. Annals of Family Medicine.
+      2013;11(5):452-459.
+    url: https://www.annfammed.org/content/11/5/452
+  - text: >
+      German Federal Institute for Risk Assessment (BfR). FAQ on coumarin in cinnamon and
+      other foods. On the tolerable daily intake for coumarin, and why cassia carries far
+      more of it than Ceylon cinnamon.
+    url: https://www.bfr.bund.de/en/service/frequently-asked-questions/topic/faq-on-coumarin-in-cinnamon-and-other-foods/
 ---
 
 ## Why it earns its place

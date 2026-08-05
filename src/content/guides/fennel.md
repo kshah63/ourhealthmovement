@@ -9,6 +9,12 @@ summary: >
   at the end of a meal.
 tags: [digestion, cooling, saunf, after-meal]
 updated: 2026-06-01
+references:
+  - text: >
+      Badgujar SB, Patel VV, Bandivdekar AH. Foeniculum vulgare Mill: a review of its botany,
+      phytochemistry, pharmacology, contemporary application, and toxicology. BioMed Research
+      International. 2014;2014:842674.
+    url: https://doi.org/10.1155/2014/842674
 ---
 
 ## Why it earns its place

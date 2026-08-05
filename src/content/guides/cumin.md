@@ -9,6 +9,12 @@ summary: >
   digestive spices.
 tags: [digestion, jeera, ayurveda, bloating]
 updated: 2026-06-01
+references:
+  - text: >
+      Srinivasan K. Cumin (Cuminum cyminum) and black cumin (Nigella sativa) seeds:
+      traditional uses, chemical constituents, and nutraceutical effects. Food Quality and
+      Safety. 2018;2(1):1-16.
+    url: https://doi.org/10.1093/fqsafe/fyx031
 ---
 
 ## Why it earns its place

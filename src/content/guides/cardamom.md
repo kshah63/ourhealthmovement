@@ -9,6 +9,12 @@ summary: >
   a gentle aid to digestion after rich meals.
 tags: [digestion, aromatic, chai, uplifting]
 updated: 2026-06-01
+references:
+  - text: >
+      Ashokkumar K, Murugan M, Dhanya MK, Warkentin TD. Botany, traditional uses,
+      phytochemistry and biological activities of cardamom [Elettaria cardamomum (L.) Maton]
+      - a critical review. Journal of Ethnopharmacology. 2020;246:112244.
+    url: https://doi.org/10.1016/j.jep.2019.112244
 ---
 
 ## Why it earns its place

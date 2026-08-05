@@ -9,6 +9,12 @@ summary: >
   perfume everything they touch.
 tags: [kadi-patta, south-indian, tempering, digestion]
 updated: 2026-06-01
+references:
+  - text: >
+      Balakrishnan R, Vijayraja D, Jo SH, Ganesan P, Su-Kim I, Choi DK. Medicinal profile,
+      phytochemistry, and pharmacological activities of Murraya koenigii and its primary
+      bioactive compounds. Antioxidants. 2020;9(2):101.
+    url: https://pubmed.ncbi.nlm.nih.gov/31991665/
 ---
 
 ## Why it earns its place

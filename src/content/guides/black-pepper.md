@@ -9,6 +9,17 @@ summary: >
   turmeric.
 tags: [piperine, digestion, warming, bioavailability]
 updated: 2026-06-01
+references:
+  - text: >
+      Shoba G, Joy D, Joseph T, Majeed M, Rajendran R, Srinivas PS. Influence of piperine on
+      the pharmacokinetics of curcumin in animals and human volunteers. Planta Medica.
+      1998;64(4):353-356. The study behind the turmeric and pepper pairing.
+    url: https://doi.org/10.1055/s-2006-957450
+  - text: >
+      Srinivasan K. Black pepper and its pungent principle-piperine: a review of diverse
+      physiological effects. Critical Reviews in Food Science and Nutrition.
+      2007;47(8):735-748.
+    url: https://doi.org/10.1080/10408390601062054
 ---
 
 ## Why it earns its place

@@ -9,6 +9,16 @@ summary: >
   the most-studied anti-inflammatory foods in the spice drawer.
 tags: [anti-inflammatory, golden-milk, curcumin, ayurveda]
 updated: 2026-06-01
+references:
+  - text: >
+      Shoba G, Joy D, Joseph T, Majeed M, Rajendran R, Srinivas PS. Influence of piperine on
+      the pharmacokinetics of curcumin in animals and human volunteers. Planta Medica.
+      1998;64(4):353-356.
+    url: https://doi.org/10.1055/s-2006-957450
+  - text: >
+      National Center for Complementary and Integrative Health (NIH). Turmeric: Usefulness
+      and Safety.
+    url: https://www.nccih.nih.gov/health/turmeric
 ---
 
 ## Why it earns its place

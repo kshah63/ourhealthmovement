@@ -9,6 +9,12 @@ summary: >
   greens, mustard runs deep through India's regional kitchens.
 tags: [mustard, sarson, bengali, warming]
 updated: 2026-06-01
+references:
+  - text: >
+      Tian Y, Deng F. Phytochemistry and biological activity of mustard (Brassica juncea): a
+      review. CyTA - Journal of Food. 2020;18(1):704-718. On glucosinolates, sinigrin and the
+      allyl isothiocyanate behind mustard's pungency.
+    url: https://doi.org/10.1080/19476337.2020.1833988
 ---
 
 ## Why it earns its place

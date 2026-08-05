@@ -9,6 +9,15 @@ summary: >
   gentle, sweet warmth.
 tags: [tej-patta, aromatic, biryani, digestion]
 updated: 2026-06-01
+references:
+  - text: >
+      Royal Botanic Gardens, Kew. Plants of the World Online: Cinnamomum tamala, the Indian
+      bay leaf or tej patta, native to the Himalaya, China and Indo-China.
+    url: https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:463718-1
+  - text: >
+      Royal Botanic Gardens, Kew. Plants of the World Online: Laurus nobilis, the
+      Mediterranean bay laurel, a different plant altogether.
+    url: https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:465049-1
 ---
 
 ## Why it earns its place

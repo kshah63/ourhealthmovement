@@ -55,6 +55,30 @@ const seasonLabel =
         <Content />
       </div>
       {
+        data.references.length > 0 && (
+          <section class="g-refs">
+            <h2 class="g-refs__head">References & further reading</h2>
+            <p class="g-refs__note">
+              Where this guide leans on research or an official safety position, here is the
+              source. Traditional uses are described as tradition, not as proven effect.
+            </p>
+            <ol class="g-refs__list">
+              {data.references.map((r) => (
+                <li>
+                  {r.url ? (
+                    <a href={r.url} target="_blank" rel="noopener nofollow">
+                      {r.text}
+                    </a>
+                  ) : (
+                    r.text
+                  )}
+                </li>
+              ))}
+            </ol>
+          </section>
+        )
+      }
+      {
         data.tags.length > 0 && (
           <div class="g-tags">
             {data.tags.map((t) => (
@@ -154,6 +178,45 @@ const seasonLabel =
     padding-block: clamp(2.5rem, 6vw, 4rem);
     max-width: 760px;
   }
+  .g-refs {
+    margin-top: 3rem;
+    padding: clamp(1.25rem, 3vw, 1.75rem) clamp(1.25rem, 3vw, 2rem);
+    background: var(--paper-2);
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--accent);
+    border-radius: var(--radius);
+  }
+  .g-refs__head {
+    font-size: var(--step-1);
+    color: var(--ink);
+  }
+  .g-refs__note {
+    margin-top: 0.5rem;
+    font-size: var(--step--1);
+    color: var(--ink-3);
+    max-width: 62ch;
+  }
+  .g-refs__list {
+    margin: 1.25rem 0 0;
+    padding-left: 1.3em;
+    display: grid;
+    gap: 0.7rem;
+    font-size: var(--step--1);
+    line-height: 1.55;
+    color: var(--ink-2);
+  }
+  .g-refs__list li::marker {
+    color: var(--accent);
+    font-weight: 640;
+  }
+  .g-refs__list a {
+    color: var(--ink-2);
+    text-decoration-color: var(--line-strong);
+  }
+  .g-refs__list a:hover {
+    color: var(--terracotta-deep);
+  }
+
   .g-tags {
     display: flex;
     flex-wrap: wrap;

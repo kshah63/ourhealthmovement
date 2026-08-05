@@ -34,6 +34,13 @@ const guides = defineCollection({
     tags: z.array(z.string()).default([]),
     order: z.number().default(0),
     updated: z.coerce.date().optional(),
+    /**
+     * Further reading behind the guide. `text` is the full citation, `url` an
+     * optional link to the paper, abstract or official page.
+     */
+    references: z
+      .array(z.object({ text: z.string(), url: z.string().url().optional() }))
+      .default([]),
   }),
 });
 

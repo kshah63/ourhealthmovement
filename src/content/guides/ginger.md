@@ -9,6 +9,16 @@ summary: >
   the friend you want through cold and damp seasons.
 tags: [digestion, nausea, warming, circulation]
 updated: 2026-06-01
+references:
+  - text: >
+      Viljoen E, Visser J, Koen N, Musekiwa A. A systematic review and meta-analysis of the
+      effect and safety of ginger in the treatment of pregnancy-associated nausea and
+      vomiting. Nutrition Journal. 2014;13:20.
+    url: https://pmc.ncbi.nlm.nih.gov/articles/PMC3995184/
+  - text: >
+      National Center for Complementary and Integrative Health (NIH). Ginger: Usefulness and
+      Safety.
+    url: https://www.nccih.nih.gov/health/ginger
 ---
 
 ## Why it earns its place
